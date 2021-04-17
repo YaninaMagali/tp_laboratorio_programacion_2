@@ -22,10 +22,6 @@ namespace Entidades
             return operador.ToString();
         }
 
-
-        /*El método Operar será de clase: validará y realizará la operación pedida entre
-ambos números.*/
-
         public static double Operar(Numero num1, Numero num2, string operador)
         {
             double resultadoOperacion = 0;
