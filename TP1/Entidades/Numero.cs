@@ -67,21 +67,18 @@ namespace Entidades
             string binarioAux = null;
             double resto;
             int i;
-            
-            if(numero >= 0)
+
+            while (numero > 0)
             {
-                while (numero > 0)
-                {
-                    resto = (int)numero % 2;
-                    binarioAux = binarioAux + resto.ToString();
-                    numero = numero / 2;                                            
-                    numero = Math.Truncate(numero);
-                }
-                int tam = binarioAux.Length;
-                for (i = tam; i > 0; i--)
-                {
-                    binario = binario + binarioAux[i - 1];
-                }
+                resto = (int)numero % 2;
+                binarioAux = binarioAux + resto.ToString();
+                numero = numero / 2;
+                numero = Math.Truncate(numero);
+            }
+            int tam = binarioAux.Length;
+            for (i = tam; i > 0; i--)
+            {
+                binario = binario + binarioAux[i - 1];
             }
 
             return binario;
@@ -92,7 +89,7 @@ namespace Entidades
             string binario = null;
             double auxValidacion;
 
-            if (double.TryParse(numero, out auxValidacion) && auxValidacion >= 0)
+            if (double.TryParse(numero, out auxValidacion) && auxValidacion > 0)
             {
                 binario = DecimalBinario(auxValidacion);
             }
