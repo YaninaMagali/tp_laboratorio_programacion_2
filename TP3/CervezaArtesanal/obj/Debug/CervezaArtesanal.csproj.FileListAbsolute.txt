@@ -1,0 +1,6 @@
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\bin\Debug\CervezaArtesanal.dll
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\bin\Debug\CervezaArtesanal.pdb
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\obj\Debug\CervezaArtesanal.csprojAssemblyReference.cache
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\obj\Debug\CervezaArtesanal.csproj.CoreCompileInputs.cache
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\obj\Debug\CervezaArtesanal.dll
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\obj\Debug\CervezaArtesanal.pdb
