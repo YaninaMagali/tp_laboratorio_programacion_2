@@ -138,31 +138,36 @@ namespace CervezaArtesanal
         {
             bool estaCocinando = false;
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/www.txt";
-            
-            Receta receta = new Receta(tipo, litros);
-            receta.CalcularIngredientes();
+            string pathErrorLog = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/errorsLog.txt";
 
-            if (AgregarIngredientes(FabricaBebidas.stockIngredientes, receta))
-            {//un ir por cada tipo? o resuelve con generics???
-                if(tipo is ETipoCerveza.IPA)
-                {
-                    CervezaIPA cerveza = new CervezaIPA(receta);
-                    //Actualizar lista ipa
-                    Archivo.GuardarTexto(path, cerveza.ToString());
-                }
-                else if (tipo is ETipoCerveza.Kolsh)
-                {
-                    CervezaKolsh cerveza = new CervezaKolsh(receta);
-                    //Actualizar lista Kolsh
-                    Archivo.GuardarTexto(path, cerveza.ToString());
+            try
+            {
+                Receta receta = new Receta(tipo, litros);
+                receta.CalcularIngredientes();
+
+                if (AgregarIngredientes(FabricaBebidas.stockIngredientes, receta))
+                {//un ir por cada tipo? o resuelve con generics???
+                    if (tipo is ETipoCerveza.IPA)
+                    {
+                        CervezaIPA cerveza = new CervezaIPA(receta);
+                        //Actualizar lista ipa
+                        Archivo.GuardarTexto(path, cerveza.ToString());
+                    }
+                    else if (tipo is ETipoCerveza.Kolsh)
+                    {
+                        CervezaKolsh cerveza = new CervezaKolsh(receta);
+                        //Actualizar lista Kolsh
+                        Archivo.GuardarTexto(path, cerveza.ToString());
+                    }
                 }
                 estaCocinando = true;
-                
+            }
+            catch (RecetaExcepcion ex)
+            {
+                Archivo.GuardarTexto(pathErrorLog, new Error(ex).ToString());
 
             }
-            
             return estaCocinando;
-
         }
 
         public static void Enfriar(int minutos, int temperatura)

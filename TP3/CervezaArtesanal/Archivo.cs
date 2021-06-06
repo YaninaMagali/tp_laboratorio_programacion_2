@@ -18,7 +18,7 @@ namespace CervezaArtesanal
         public static void GuardarTexto(string path, string datos)
         {
             //bool pudoGuardar = true;
-            StreamWriter escritor = new StreamWriter(path);
+            StreamWriter escritor = new StreamWriter(path, true);
 
             using (escritor)
             {

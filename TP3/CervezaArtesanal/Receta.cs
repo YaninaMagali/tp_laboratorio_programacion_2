@@ -34,7 +34,7 @@ namespace CervezaArtesanal
                 if (value > 0)
                 { this.litrosAPreparar = value; }
                 else
-                { throw new Exception(); }
+                { throw new RecetaExcepcion("Para calcular una receta los litros ingresados deben ser mayor a cero"); }
             }
         }
 

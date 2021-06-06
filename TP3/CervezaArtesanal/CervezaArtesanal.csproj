@@ -47,12 +47,14 @@
     <Compile Include="CervezaIPA.cs" />
     <Compile Include="CervezaKolsh.cs" />
     <Compile Include="EIngredientes.cs" />
+    <Compile Include="Error.cs" />
     <Compile Include="ETipoCerveza.cs" />
     <Compile Include="FabricaBebidas.cs" />
     <Compile Include="IRecetaCerveza.cs" />
     <Compile Include="Fermentador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Receta.cs" />
+    <Compile Include="RecetaExcepcion.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
