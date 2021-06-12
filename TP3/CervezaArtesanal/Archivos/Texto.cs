@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CervezaArtesanal
 {
-    public static class Archivo
+    public class Archivo<T> : IArchivo<T>
     {
         /// <summary>
         /// Guarda el string recibido como parametro en el path especificado por parametro. 
@@ -15,14 +15,14 @@ namespace CervezaArtesanal
         /// <param name="path"></param>
         /// <param name="datos"></param>
         /// <returns>Retorna true en caso de exito, false si no pudo guardar el archivo.</returns>
-        public static void GuardarTexto(string path, string datos)
+        public void Guardar(string path, T dato)
         {
             //bool pudoGuardar = true;
             StreamWriter escritor = new StreamWriter(path, true);
 
             using (escritor)
             {
-                escritor.WriteLine(datos);
+                escritor.WriteLine(dato);
 
                 //if (!File.Exists(path)) //si no existe, no se guardo nada = rip, retorno false.
 

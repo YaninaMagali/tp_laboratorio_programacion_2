@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,19 +43,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Archivo.cs" />
-    <Compile Include="CervezaArtesanal.cs" />
-    <Compile Include="CervezaIPA.cs" />
-    <Compile Include="CervezaKolsh.cs" />
-    <Compile Include="EIngredientes.cs" />
+    <Compile Include="Archivos\Texto.cs" />
+    <Compile Include="Archivos\IArchivo.cs" />
+    <Compile Include="Archivos\XML.cs" />
+    <Compile Include="Cerveza\CervezaArtesanal.cs" />
+    <Compile Include="Cerveza\CervezaIPA.cs" />
+    <Compile Include="Cerveza\CervezaKolsh.cs" />
+    <Compile Include="Cerveza\EIngredientes.cs" />
     <Compile Include="Error.cs" />
-    <Compile Include="ETipoCerveza.cs" />
+    <Compile Include="Cerveza\ETipoCerveza.cs" />
     <Compile Include="FabricaBebidas.cs" />
-    <Compile Include="IRecetaCerveza.cs" />
+    <Compile Include="Receta\IReceta.cs" />
     <Compile Include="Fermentador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Receta.cs" />
-    <Compile Include="RecetaExcepcion.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Receta\Receta.cs" />
+    <Compile Include="Receta\RecetaCerveza.cs" />
+    <Compile Include="Receta\RecetaExcepcion.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace CervezaArtesanal
 {
-    interface IRecetaCerveza
+    interface IArchivo<T>
     {
-        Receta CalcularIngredientes();
+        void Guardar(string path, T dato);
+
     }
 }

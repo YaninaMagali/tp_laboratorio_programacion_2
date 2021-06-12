@@ -9,19 +9,19 @@ namespace CervezaArtesanal
     public class Fermentador
     {
         public int capacidadLitros;
-        public Receta receta;
+        public RecetaCerveza receta;
 
         public Fermentador()
         {
             this.capacidadLitros = 50;
         }
 
-        public Fermentador(Receta receta) :this()
+        public Fermentador(RecetaCerveza receta) :this()
         {
             this. receta = receta;
         }
 
-        public Receta Receta
+        public RecetaCerveza Receta
             {
             get { return this.receta;  }
             set
@@ -40,7 +40,7 @@ namespace CervezaArtesanal
             set { this.capacidadLitros = value; }
         }
 
-        public bool ValidarCapacidad(Receta receta)
+        public bool ValidarCapacidad(RecetaCerveza receta)
         {
             bool tieneCapadidad = false;
 
@@ -51,25 +51,10 @@ namespace CervezaArtesanal
             return tieneCapadidad;
         }
 
-        public void ActualizarCapacidad(Receta receta)
+        public void ActualizarCapacidad(RecetaCerveza receta)
         {
             this.Capacidad = this.Capacidad - receta.litrosAPreparar;
         }
         
-        //public bool ValidarDisponibilidad()
-        //{
-        //    bool estaLibre = false;
-
-        //    if(this.receta is null)
-        //    {
-        //        estaLibre = true;
-        //    }
-
-        //    return estaLibre;
-        //}
-
-
-
-
     }
 }

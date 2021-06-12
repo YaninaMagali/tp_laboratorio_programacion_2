@@ -6,17 +6,27 @@ using System.Threading.Tasks;
 
 namespace CervezaArtesanal
 {
-    class CervezaKolsh : CervezaArtesanal
+    [Serializable]
+    public class CervezaKolsh : CervezaArtesanal
     {
-        public CervezaKolsh(Receta receta)
+        private float ibu;
+
+        public CervezaKolsh() { }
+        public CervezaKolsh(RecetaCerveza receta)
             : base(ETipoCerveza.Kolsh, receta)
         {
+            this.ibu = 6;
+        }
+
+        public float Ibu
+        {
+            get { return this.ibu; }
         }
 
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"IBU %2 ");  
+            sb.AppendLine($"IBU %{this.Ibu} ");  
             sb.AppendLine(base.ToString());
             
             return sb.ToString();
