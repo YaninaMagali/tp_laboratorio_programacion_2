@@ -13,7 +13,7 @@ namespace CervezaArtesanal
         public static Dictionary<EIngredientes, float> stockIngredientes;
 
         /// <summary>
-        /// Inicializa stock de ingredientes y lista de ollas disponibles
+        /// Inicializa stock de ingredientes
         /// </summary>
         /// 
         static FabricaBebidas()
@@ -31,12 +31,17 @@ namespace CervezaArtesanal
             stockIngredientes.Add(EIngredientes.Agua, 1800000);
         }
 
+        /// <summary>
+        /// Propiedad de solo lectura. Devuelve una lista de cervezas en stock
+        /// </summary>
         public static List<CervezaArtesanal> ControlStockCerveza
         {
             get { return FabricaBebidas.controlStockCerveza; }
-            //set { myVar = value; }
         }
 
+        /// <summary>
+        /// Propiedad de solo lectura. Devuelve un diccionario cuyo par clave valor representa ingrediente y su cantidad en stock
+        /// </summary>
         public static Dictionary<EIngredientes, float> StockIngredientes
         {
             get { return FabricaBebidas.stockIngredientes; }
@@ -46,7 +51,6 @@ namespace CervezaArtesanal
         /// <summary>
         /// Valida haya suficiente stock de un ingrediente
         /// </summary>
-        /// <param name="stockIngredientes"></param>
         /// <param name="ingrediente"></param>
         /// <param name="cantidad"></param>
         /// <returns></returns>
@@ -73,7 +77,7 @@ namespace CervezaArtesanal
         /// <summary>
         /// Resta al stock los ingredientes usados para la fabrica
         /// </summary>
-        /// <param name="ingredientesUsados"></param>
+        /// <param name="receta">receta que contiene litros a preparar, ingredientes y sus cantidades</param>
         public static void CalcularIngredientesRestantes(RecetaCerveza receta)
         {
             foreach (KeyValuePair<EIngredientes, float> i in receta.ingredientes)
@@ -115,12 +119,19 @@ namespace CervezaArtesanal
             return hayStock;
         }
          
+        /// <summary>
+        /// Empieza a cocinar la cerveza siempre que haya stock de ingrdientes necesarios
+        /// Si falla se guarda el error en un archivo de log
+        /// Si puede empezar a cocinar se suma la cerveza al stock actual y se restan delstock de ingredientes los utilizados
+        /// </summary>
+        /// <param name="tipo"></param>
+        /// <param name="litros"></param>
+        /// <returns>Devuelve true si puede empezar a cocinar la cerveza, false caso contrario</returns>
         public static bool Cocinar(ETipoCerveza tipo, float litros)
         {
             bool estaCocinando = false;
-            Archivo<string> archivoLog = new Archivo<string>();
+            Texto<string> archivoLog = new Texto<string>();
             XML<List<CervezaArtesanal>> xmlStockCerveza= new XML<List<CervezaArtesanal>>();
-            //Archivo<CervezaArtesanal> stockCervezaTxt = new Archivo<CervezaArtesanal>();
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/controlStockCerveza.xml";
             string pathErrorLog = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/errorsLog.txt";
 
@@ -144,7 +155,7 @@ namespace CervezaArtesanal
                     }
                     CalcularIngredientesRestantes(receta);
                     estaCocinando = true;
-                    xmlStockCerveza.Guardar(path, FabricaBebidas.controlStockCerveza);  
+                    xmlStockCerveza.Guardar(path, FabricaBebidas.controlStockCerveza);
                 }
              }
             catch (RecetaExcepcion ex)
@@ -157,6 +168,9 @@ namespace CervezaArtesanal
             }
             return estaCocinando;
         }   
+
+
+        
         
     
 

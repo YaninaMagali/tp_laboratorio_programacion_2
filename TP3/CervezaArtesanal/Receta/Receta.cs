@@ -10,13 +10,16 @@ namespace CervezaArtesanal
     {
         public Dictionary<EIngredientes, float> ingredientes;
 
+        /// <summary>
+        /// Constructor sin parametros donde se asigna un diccionario instanciado al atributo ingredientes
+        /// </summary>
         public Receta()
         { 
             this.ingredientes = new Dictionary<EIngredientes, float>();
         }
 
         /// <summary>
-        /// Propiedad por la cual se accede al dict de ingredientes y se asignan ingredientes a la receta 
+        /// Propiedad de lectura y escritura por la cual se accede al dict de ingredientes y se asignan ingredientes a la receta 
         /// </summary>
         public Dictionary<EIngredientes, float> Ingredientes
         { 
@@ -43,6 +46,10 @@ namespace CervezaArtesanal
 
         }
 
+        /// <summary>
+        /// Calcula los ingredientes para una receta
+        /// </summary>
+        /// <returns>Devuelve una receta</returns>
         public abstract Receta CalcularIngredientes();
     }
 }

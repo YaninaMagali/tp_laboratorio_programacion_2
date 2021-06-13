@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 namespace CervezaArtesanal
 {
-    [Serializable]
     public class RecetaCerveza : Receta
     {
         public float litrosAPreparar;
         public ETipoCerveza tipoCerveza;
 
-        public RecetaCerveza() { }
+        /// <summary>
+        /// Constructor con parametros. Asigna valores recibidos por parametro a los atributos de la clase. Invoca tambien al constructor de la clase base
+        /// </summary>
+        /// <param name="tipoCerveza">enum de tipo de cerveza a preparar</param>
+        /// <param name="litrosAPreparar">cantidad de litros a preparar</param>
         public RecetaCerveza(ETipoCerveza tipoCerveza, float litrosAPreparar) : base ()
         {
             LitrosAPreparar = litrosAPreparar;
@@ -20,7 +23,7 @@ namespace CervezaArtesanal
         }
 
         /// <summary>
-        /// Propiedad por la cual se asignan litros para calcular la receta solo si es valor recibido es mayor a 0
+        /// Propiedad por de lectura y escritura. Se asignan litros para calcular la receta solo si es valor recibido es mayor a 0
         /// </summary>
         public float LitrosAPreparar
         {
@@ -40,7 +43,7 @@ namespace CervezaArtesanal
         /// <summary>
         /// Calcula los ingredientes necesarios de acuerdo al tipo de cerveza y la cantidad de litros a preparar
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Devuelve una receta de cerveza</returns>
         public override Receta CalcularIngredientes()
         {
 

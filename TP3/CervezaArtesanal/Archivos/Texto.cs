@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CervezaArtesanal
 {
-    public class Archivo<T> : IArchivo<T>
+    public class Texto<T> : IArchivo<T>
     {
         /// <summary>
         /// Guarda el dato recibido  en el path especificado

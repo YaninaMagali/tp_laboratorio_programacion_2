@@ -12,6 +12,11 @@ namespace CervezaArtesanal
 {
     public class XML<T> : IArchivo<T>
     {
+        /// <summary>
+        /// Guarda el objeto recibido por parametro en la ruta especificada
+        /// </summary>
+        /// <param name="path">ruta del archivo</param>
+        /// <param name="dato">objeto a serializar</param>
         public void Guardar(string path, T dato)
         {
             using (XmlTextWriter escritor = new XmlTextWriter(path, Encoding.UTF8))
@@ -20,16 +25,5 @@ namespace CervezaArtesanal
                 serializador.Serialize(escritor, dato);
             }
         }
-
-        public void WriteObject(string path, T dato)
-        {
-           
-            FileStream writer = new FileStream(path, FileMode.Create);
-            DataContractSerializer ser =
-                new DataContractSerializer(typeof(T));
-            ser.WriteObject(writer, dato);
-            writer.Close();
-        }
-
     }
 }
