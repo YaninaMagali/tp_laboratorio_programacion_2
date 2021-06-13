@@ -29,24 +29,36 @@ namespace CervezaArtesanalForm
                 Enum.TryParse<ETipoCerveza>(comboTipos.SelectedValue.ToString(), out tipoAux))
             {
                 if(FabricaBebidas.Cocinar(tipoAux, cantidadLitrosAux))
-                { MessageBox.Show("COCINANDO..."); }
+                { MessageBox.Show("COCINANDO", "Iuju!", MessageBoxButtons.OK, MessageBoxIcon.Information); }
                 else
-                { MessageBox.Show("NO HAY STOCK DE INGREDIENTES...", 
+                { MessageBox.Show("NO HAY FERMENTADORES o STOCK DE INGREDIENTES", 
                     "Error!",
                     MessageBoxButtons.OK, 
                     MessageBoxIcon.Error); }
             }
             else 
             {
-                MessageBox.Show("REVISAR FORMATO AL INGRESAR LOS LITROS A PREPARAR...",
+                MessageBox.Show("REVISAR FORMATO AL INGRESAR LOS LITROS A PREPARAR",
                     "Error!",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                    MessageBoxIcon.Warning);
             }  
         }
 
+        private void CervezaArtesanalForm_Load(object sender, EventArgs e)
+        {
 
+        }
 
-
+        private void CervezaArtesanalForm_(object sender, FormClosingEventArgs e)
+        {
+            if(MessageBox.Show("¿Esta seguro que desea salir?", "SALIR ",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Error,
+            MessageBoxDefaultButton.Button2) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

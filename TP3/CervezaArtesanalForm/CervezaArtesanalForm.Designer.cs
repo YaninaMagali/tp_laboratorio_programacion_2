@@ -38,7 +38,7 @@ namespace CervezaArtesanalForm
             // 
             // txtCantidadLitros
             // 
-            this.txtCantidadLitros.Location = new System.Drawing.Point(13, 33);
+            this.txtCantidadLitros.Location = new System.Drawing.Point(18, 33);
             this.txtCantidadLitros.Name = "txtCantidadLitros";
             this.txtCantidadLitros.Size = new System.Drawing.Size(124, 20);
             this.txtCantidadLitros.TabIndex = 0;
@@ -46,7 +46,7 @@ namespace CervezaArtesanalForm
             // lblCantidadLitros
             // 
             this.lblCantidadLitros.AutoSize = true;
-            this.lblCantidadLitros.Location = new System.Drawing.Point(13, 13);
+            this.lblCantidadLitros.Location = new System.Drawing.Point(21, 13);
             this.lblCantidadLitros.Name = "lblCantidadLitros";
             this.lblCantidadLitros.Size = new System.Drawing.Size(92, 13);
             this.lblCantidadLitros.TabIndex = 1;
@@ -55,7 +55,7 @@ namespace CervezaArtesanalForm
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 70);
+            this.label1.Location = new System.Drawing.Point(19, 70);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 13);
             this.label1.TabIndex = 3;
@@ -64,14 +64,14 @@ namespace CervezaArtesanalForm
             // comboTipos
             // 
             this.comboTipos.FormattingEnabled = true;
-            this.comboTipos.Location = new System.Drawing.Point(16, 97);
+            this.comboTipos.Location = new System.Drawing.Point(21, 97);
             this.comboTipos.Name = "comboTipos";
             this.comboTipos.Size = new System.Drawing.Size(121, 21);
             this.comboTipos.TabIndex = 4;
             // 
             // btCocinar
             // 
-            this.btCocinar.Location = new System.Drawing.Point(13, 147);
+            this.btCocinar.Location = new System.Drawing.Point(18, 147);
             this.btCocinar.Name = "btCocinar";
             this.btCocinar.Size = new System.Drawing.Size(124, 30);
             this.btCocinar.TabIndex = 5;
@@ -83,14 +83,19 @@ namespace CervezaArtesanalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(439, 251);
+            this.ClientSize = new System.Drawing.Size(167, 225);
             this.Controls.Add(this.btCocinar);
             this.Controls.Add(this.comboTipos);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblCantidadLitros);
             this.Controls.Add(this.txtCantidadLitros);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CervezaArtesanalForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CerveceriaArtesanal";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CervezaArtesanalForm_);
+            this.Load += new System.EventHandler(this.CervezaArtesanalForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
