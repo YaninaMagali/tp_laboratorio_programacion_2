@@ -73,7 +73,7 @@ namespace CervezaArtesanalForm
             // 
             this.btCocinar.Location = new System.Drawing.Point(13, 147);
             this.btCocinar.Name = "btCocinar";
-            this.btCocinar.Size = new System.Drawing.Size(75, 23);
+            this.btCocinar.Size = new System.Drawing.Size(124, 30);
             this.btCocinar.TabIndex = 5;
             this.btCocinar.Text = "COCINAR";
             this.btCocinar.UseVisualStyleBackColor = true;

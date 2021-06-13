@@ -11,7 +11,6 @@ namespace CervezaArtesanal
         public static List<Fermentador> listaFermentadores;
         public static List<CervezaArtesanal> controlStockCerveza;
         public static Dictionary<EIngredientes, float> stockIngredientes;
-        public static int numero;
 
         /// <summary>
         /// Inicializa stock de ingredientes y lista de ollas disponibles
@@ -19,7 +18,6 @@ namespace CervezaArtesanal
         /// 
         static FabricaBebidas()
         {
-            numero = 3;
             controlStockCerveza = new List<CervezaArtesanal>();
             listaFermentadores = new List<Fermentador>();
             stockIngredientes = new Dictionary<EIngredientes, float>();
@@ -28,9 +26,21 @@ namespace CervezaArtesanal
             listaFermentadores.Add(new Fermentador(new RecetaCerveza(ETipoCerveza.Kolsh, 2)));
             listaFermentadores.Add(new Fermentador(new RecetaCerveza(ETipoCerveza.Kolsh, 2)));
             
-            stockIngredientes.Add(EIngredientes.Lupulo, 1000);
-            stockIngredientes.Add(EIngredientes.Malta, 2000);
+            stockIngredientes.Add(EIngredientes.Lupulo, 10000);
+            stockIngredientes.Add(EIngredientes.Malta, 20000);
             stockIngredientes.Add(EIngredientes.Agua, 1800000);
+        }
+
+        public static List<CervezaArtesanal> ControlStockCerveza
+        {
+            get { return FabricaBebidas.controlStockCerveza; }
+            //set { myVar = value; }
+        }
+
+        public static Dictionary<EIngredientes, float> StockIngredientes
+        {
+            get { return FabricaBebidas.stockIngredientes; }
+            //set { myVar = value; }
         }
 
         /// <summary>
@@ -105,12 +115,12 @@ namespace CervezaArtesanal
             return hayStock;
         }
          
-        public static bool Cocinar(ETipoCerveza tipo, int litros)
+        public static bool Cocinar(ETipoCerveza tipo, float litros)
         {
             bool estaCocinando = false;
-            Archivo<string> archivo = new Archivo<string>();
+            Archivo<string> archivoLog = new Archivo<string>();
             XML<List<CervezaArtesanal>> xmlStockCerveza= new XML<List<CervezaArtesanal>>();
-            //Archivo<CervezaArtesanal> xmlStockCerveza = new Archivo<CervezaArtesanal>();
+            //Archivo<CervezaArtesanal> stockCervezaTxt = new Archivo<CervezaArtesanal>();
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/controlStockCerveza.xml";
             string pathErrorLog = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/errorsLog.txt";
 
@@ -124,22 +134,14 @@ namespace CervezaArtesanal
                 {
                     if (tipo is ETipoCerveza.IPA)
                     {
-                        //CervezaIPA cerveza = new CervezaIPA(receta);
-                        //Actualizar lista ipa
                         cerveza = new CervezaIPA(receta);
                         controlStockCerveza.Add(cerveza);
-                        //archivo.Guardar(path, cerveza.ToString());
                     }
                     else if (tipo is ETipoCerveza.Kolsh)
                     {
                         cerveza = new CervezaKolsh(receta);
                         controlStockCerveza.Add(cerveza);
-                        //xmlStockCerveza.Guardar(path, cerveza);
-                        //archivo.Guardar(path, cerveza.ToString());
                     }
-                    //Aca si serializo, puedo pisar el archivo xml con la lista actualizada
-                   
-                    
                     CalcularIngredientesRestantes(receta);
                     estaCocinando = true;
                     xmlStockCerveza.Guardar(path, FabricaBebidas.controlStockCerveza);  
@@ -147,11 +149,11 @@ namespace CervezaArtesanal
              }
             catch (RecetaExcepcion ex)
             {
-                archivo.Guardar(pathErrorLog, new Error(ex).ToString());
+                archivoLog.Guardar(pathErrorLog, new Error(ex).ToString());
             }
             catch (NullReferenceException ex)
             {
-                archivo.Guardar(pathErrorLog, new Error(ex).ToString());
+                archivoLog.Guardar(pathErrorLog, new Error(ex).ToString());
             }
             return estaCocinando;
         }   

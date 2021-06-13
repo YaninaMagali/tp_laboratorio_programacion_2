@@ -8,7 +8,7 @@ namespace CervezaArtesanal
 {
     public class Fermentador
     {
-        public int capacidadLitros;
+        public float capacidadLitros;
         public RecetaCerveza receta;
 
         public Fermentador()
@@ -34,7 +34,7 @@ namespace CervezaArtesanal
             }
             }
 
-        public int Capacidad
+        public float Capacidad
         {
             get { return this.capacidadLitros; }
             set { this.capacidadLitros = value; }

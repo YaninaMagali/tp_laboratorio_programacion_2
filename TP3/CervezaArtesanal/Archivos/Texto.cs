@@ -10,11 +10,10 @@ namespace CervezaArtesanal
     public class Archivo<T> : IArchivo<T>
     {
         /// <summary>
-        /// Guarda el string recibido como parametro en el path especificado por parametro. 
+        /// Guarda el dato recibido  en el path especificado
         /// </summary>
         /// <param name="path"></param>
-        /// <param name="datos"></param>
-        /// <returns>Retorna true en caso de exito, false si no pudo guardar el archivo.</returns>
+        /// <param name="dato"></param>
         public void Guardar(string path, T dato)
         {
             //bool pudoGuardar = true;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CervezaArtesanal
 {
-    class RecetaExcepcion : Exception
+    public class RecetaExcepcion : Exception
     {
         public RecetaExcepcion(string mensaje) : base(mensaje)
         {

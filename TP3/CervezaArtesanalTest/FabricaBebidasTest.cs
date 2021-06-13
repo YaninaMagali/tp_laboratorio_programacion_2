@@ -9,44 +9,45 @@ namespace CervezaArtesanalTest
     public class FabricaBebidasTest
     {
         [TestMethod]
-        [DataRow(1, EIngredientes.Malta)]
-        [DataRow(4, EIngredientes.Lupulo)]
-        [DataRow(5, EIngredientes.Lupulo)]
+        [DataRow(2000, EIngredientes.Malta)]
+        [DataRow(9999, EIngredientes.Lupulo)]
+        [DataRow(10000, EIngredientes.Lupulo)]
         public void TestValidarStockIngredienteTrue(int cantidad, EIngredientes ingrediente)
         {
             Dictionary<EIngredientes, float> stock = new Dictionary<EIngredientes, float>();
             stock.Add(EIngredientes.Lupulo, 5);
             stock.Add(EIngredientes.Malta, 1);
-            Assert.IsTrue(FabricaBebidas.ValidarStockIngrediente(stock, ingrediente, cantidad));
+            Assert.IsTrue(FabricaBebidas.ValidarStockIngrediente(ingrediente, cantidad));
         }
 
         [TestMethod]
-        [DataRow(2, EIngredientes.Malta)]
-        [DataRow(6, EIngredientes.Lupulo)]
+        [DataRow(20001, EIngredientes.Malta)]
+        [DataRow(10001, EIngredientes.Lupulo)]
         public void TestValidarStockIngredienteFalse(int cantidad, EIngredientes ingrediente)
         {
-            Dictionary<EIngredientes, float> stock = new Dictionary<EIngredientes, float>();
-            stock.Add(EIngredientes.Lupulo, 5);
-            stock.Add(EIngredientes.Malta, 1);
-            Assert.IsFalse(FabricaBebidas.ValidarStockIngrediente(stock, ingrediente, cantidad));
+            Assert.IsFalse(FabricaBebidas.ValidarStockIngrediente(ingrediente, cantidad));
         }
-        
+
         [TestMethod]
-        public void TestCalcularIngredientesRestantes()
+        public void TestCalcularStockRestante()
         {
-            Dictionary<EIngredientes, float> stock = new Dictionary<EIngredientes, float>();
-            stock.Add(EIngredientes.Lupulo, 5);
-            stock.Add(EIngredientes.Malta, 1);
+            float auxLupulo = 0;
+            float auxMalta = 0;
+            float auxAgua = 0;
 
-            Receta receta = new Receta(ETipoCerveza.IPA, 1);
-            receta.Ingredientes = new Dictionary<EIngredientes, float>();
-            receta.Ingredientes.Add(EIngredientes.Lupulo, 4);
-            receta.Ingredientes.Add(EIngredientes.Malta, 1);
+            RecetaCerveza auxReceta = new RecetaCerveza(ETipoCerveza.IPA, 1);
+            auxReceta.CalcularIngredientes();
 
-            FabricaBebidas.CalcularIngredientesRestantes(receta);
+            auxLupulo = FabricaBebidas.stockIngredientes[EIngredientes.Lupulo] - auxReceta.ingredientes[EIngredientes.Lupulo];
+            auxMalta = FabricaBebidas.stockIngredientes[EIngredientes.Malta] - auxReceta.ingredientes[EIngredientes.Malta];
+            auxAgua = FabricaBebidas.stockIngredientes[EIngredientes.Agua] - auxReceta.ingredientes[EIngredientes.Agua];
+            
+            FabricaBebidas.CalcularIngredientesRestantes(auxReceta);
 
-            Assert.AreEqual(1, stock[EIngredientes.Lupulo]);
-            Assert.AreEqual(0, stock[EIngredientes.Malta]);
+            Assert.AreEqual(auxLupulo, FabricaBebidas.StockIngredientes[EIngredientes.Lupulo]);
+            Assert.AreEqual(auxMalta, FabricaBebidas.StockIngredientes[EIngredientes.Malta]);
+            Assert.AreEqual(auxAgua, FabricaBebidas.StockIngredientes[EIngredientes.Agua]);
+
         }
     }
 }

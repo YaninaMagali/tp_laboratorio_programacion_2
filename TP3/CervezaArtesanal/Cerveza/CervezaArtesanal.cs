@@ -14,7 +14,7 @@ namespace CervezaArtesanal
     public abstract class CervezaArtesanal
     {
         public ETipoCerveza tipo;
-        [NonSerialized()] private RecetaCerveza receta;
+        [NonSerialized()]private RecetaCerveza receta;
 
         public CervezaArtesanal() { }
         public CervezaArtesanal(ETipoCerveza tipo, RecetaCerveza receta)

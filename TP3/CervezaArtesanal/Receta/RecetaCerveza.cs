@@ -9,11 +9,11 @@ namespace CervezaArtesanal
     [Serializable]
     public class RecetaCerveza : Receta
     {
-        public int litrosAPreparar;
+        public float litrosAPreparar;
         public ETipoCerveza tipoCerveza;
 
         public RecetaCerveza() { }
-        public RecetaCerveza(ETipoCerveza tipoCerveza, int litrosAPreparar) : base ()
+        public RecetaCerveza(ETipoCerveza tipoCerveza, float litrosAPreparar) : base ()
         {
             LitrosAPreparar = litrosAPreparar;
             this.tipoCerveza = tipoCerveza;
@@ -22,7 +22,7 @@ namespace CervezaArtesanal
         /// <summary>
         /// Propiedad por la cual se asignan litros para calcular la receta solo si es valor recibido es mayor a 0
         /// </summary>
-        public int LitrosAPreparar
+        public float LitrosAPreparar
         {
             get
             {
@@ -46,14 +46,14 @@ namespace CervezaArtesanal
 
             if (this.tipoCerveza is ETipoCerveza.IPA)
             {
-                this.ingredientes.Add(EIngredientes.Lupulo, 1000 * this.litrosAPreparar);
-                this.ingredientes.Add(EIngredientes.Malta, 1000 * this.litrosAPreparar);
+                this.ingredientes.Add(EIngredientes.Lupulo, 300 * this.litrosAPreparar);
+                this.ingredientes.Add(EIngredientes.Malta, 250 * this.litrosAPreparar);
                 this.ingredientes.Add(EIngredientes.Agua, 1000 * this.litrosAPreparar);
             }
             if (this.tipoCerveza is ETipoCerveza.Kolsh)
             {
-                this.ingredientes.Add(EIngredientes.Lupulo, 1000 * litrosAPreparar);
-                this.ingredientes.Add(EIngredientes.Malta, 1000 * litrosAPreparar);
+                this.ingredientes.Add(EIngredientes.Lupulo, 200 * litrosAPreparar);
+                this.ingredientes.Add(EIngredientes.Malta, 200 * litrosAPreparar);
                 this.ingredientes.Add(EIngredientes.Agua, 1000 * litrosAPreparar);
             }
             return this;
