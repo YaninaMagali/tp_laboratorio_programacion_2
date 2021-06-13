@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CervezaArtesanal
 {
     [Serializable]
-    public class CervezaKolsh : CervezaArtesanal
+    public class CervezaKolsh : Cerveza
     {
         private float ibu;
 

@@ -9,52 +9,46 @@ namespace CervezaArtesanal
     public class Fermentador
     {
         public float capacidadLitros;
-        public RecetaCerveza receta;
+        public ETipoCerveza tipoCerveza;
 
         public Fermentador()
         {
             this.capacidadLitros = 50;
         }
 
-        public Fermentador(RecetaCerveza receta) :this()
+        public Fermentador(ETipoCerveza tipoCerveza) : this()
         {
-            this. receta = receta;
         }
 
-        public RecetaCerveza Receta
-            {
-            get { return this.receta;  }
+        public Fermentador(ETipoCerveza tipoCerveza, float capacidadLitros):this()
+        {
+            this.tipoCerveza = tipoCerveza;
+            this.capacidadLitros = capacidadLitros;
+        }
+
+        public float CapacidadLitros
+        {
+            get { return this.capacidadLitros;  }
             set
             {
                 if (ValidarCapacidad(value))
                 {
-                    this.receta = value;
+                    this.capacidadLitros = this.capacidadLitros - value;
                 }
 
             }
             }
 
-        public float Capacidad
-        {
-            get { return this.capacidadLitros; }
-            set { this.capacidadLitros = value; }
-        }
-
-        public bool ValidarCapacidad(RecetaCerveza receta)
+        public bool ValidarCapacidad(float litrosAAlmacenar)
         {
             bool tieneCapadidad = false;
 
-            if(receta.litrosAPreparar <= this.capacidadLitros)
+            if(litrosAAlmacenar <= this.capacidadLitros)
             { 
                 tieneCapadidad = true; 
             }
             return tieneCapadidad;
         }
 
-        public void ActualizarCapacidad(RecetaCerveza receta)
-        {
-            this.Capacidad = this.Capacidad - receta.litrosAPreparar;
-        }
-        
     }
 }

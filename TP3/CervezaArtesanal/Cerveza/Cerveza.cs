@@ -11,7 +11,7 @@ namespace CervezaArtesanal
     [XmlInclude(typeof(CervezaIPA))]
     [XmlInclude(typeof(CervezaKolsh))]
 
-    public abstract class CervezaArtesanal
+    public abstract class Cerveza
     {
         public ETipoCerveza tipo;
         [NonSerialized()]private RecetaCerveza receta;
@@ -19,14 +19,14 @@ namespace CervezaArtesanal
         /// <summary>
         /// Constructor sin parametros para permitir la serializacion
         /// </summary>
-        public CervezaArtesanal() { }
+        public Cerveza() { }
 
         /// <summary>
         /// Constructor con parametros
         /// </summary>
         /// <param name="tipo">tipo de cerveza a preparar</param>
         /// <param name="receta">receta con ingredientes y cantidad necesaria de ellos</param>
-        public CervezaArtesanal(ETipoCerveza tipo, RecetaCerveza receta)
+        public Cerveza(ETipoCerveza tipo, RecetaCerveza receta)
         {
             this.tipo = tipo;
             this.receta = receta;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CervezaArtesanal
 {
     [Serializable]
-    public class CervezaIPA : CervezaArtesanal
+    public class CervezaIPA : Cerveza
     {
         /// <summary>
         /// Constructor sin parametros para permitir la serializacion

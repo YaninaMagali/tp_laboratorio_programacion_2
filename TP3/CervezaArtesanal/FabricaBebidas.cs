@@ -9,32 +9,34 @@ namespace CervezaArtesanal
     public static class FabricaBebidas
     {
         public static List<Fermentador> listaFermentadores;
-        public static List<CervezaArtesanal> controlStockCerveza;
+        public static List<Cerveza> controlStockCerveza;
         public static Dictionary<EIngredientes, float> stockIngredientes;
 
         /// <summary>
-        /// Inicializa stock de ingredientes
+        /// Instancio las listas y el diccionario
+        /// Carga stock de ingredientes
+        /// Agrega fermentadores
         /// </summary>
         /// 
         static FabricaBebidas()
         {
-            controlStockCerveza = new List<CervezaArtesanal>();
+            controlStockCerveza = new List<Cerveza>();
             listaFermentadores = new List<Fermentador>();
             stockIngredientes = new Dictionary<EIngredientes, float>();
         
-            listaFermentadores.Add(new Fermentador(new RecetaCerveza(ETipoCerveza.Kolsh, 2)));
-            listaFermentadores.Add(new Fermentador(new RecetaCerveza(ETipoCerveza.Kolsh, 2)));
-            listaFermentadores.Add(new Fermentador(new RecetaCerveza(ETipoCerveza.Kolsh, 2)));
-            
-            stockIngredientes.Add(EIngredientes.Lupulo, 10000);
-            stockIngredientes.Add(EIngredientes.Malta, 20000);
-            stockIngredientes.Add(EIngredientes.Agua, 1800000);
+            listaFermentadores.Add(new Fermentador(ETipoCerveza.Kolsh));
+            listaFermentadores.Add(new Fermentador(ETipoCerveza.IPA, 30));
+            listaFermentadores.Add(new Fermentador(ETipoCerveza.Kolsh));
+
+            stockIngredientes.Add(EIngredientes.Lupulo, 60000);///1000
+            stockIngredientes.Add(EIngredientes.Malta, 60000);///2000
+            stockIngredientes.Add(EIngredientes.Agua, 180000000);
         }
 
         /// <summary>
         /// Propiedad de solo lectura. Devuelve una lista de cervezas en stock
         /// </summary>
-        public static List<CervezaArtesanal> ControlStockCerveza
+        public static List<Cerveza> ControlStockCerveza
         {
             get { return FabricaBebidas.controlStockCerveza; }
         }
@@ -120,6 +122,28 @@ namespace CervezaArtesanal
         }
          
         /// <summary>
+        /// Busca un fermentador disponible teniendo en cuenta el tipo de cerveza que se va a guardar y la capacidad de almacenamiento
+        /// </summary>
+        /// <param name="receta"></param>
+        /// <returns>Devuelve un fermentador si cumple con las condiciones, sino null</returns>
+        public static Fermentador BuscarFermentadorDisponible(RecetaCerveza receta)
+        {
+            Fermentador fermentadorDisponible = null;
+
+            foreach (Fermentador fermentador in listaFermentadores)
+            {
+                if(fermentador .tipoCerveza == receta.tipoCerveza && 
+                    fermentador.CapacidadLitros >= receta.litrosAPreparar)
+                {
+                    fermentadorDisponible = fermentador;
+
+                    break;
+                }
+            }
+            return fermentadorDisponible;
+        }
+
+        /// <summary>
         /// Empieza a cocinar la cerveza siempre que haya stock de ingrdientes necesarios
         /// Si falla se guarda el error en un archivo de log
         /// Si puede empezar a cocinar se suma la cerveza al stock actual y se restan delstock de ingredientes los utilizados
@@ -131,7 +155,7 @@ namespace CervezaArtesanal
         {
             bool estaCocinando = false;
             Texto<string> archivoLog = new Texto<string>();
-            XML<List<CervezaArtesanal>> xmlStockCerveza= new XML<List<CervezaArtesanal>>();
+            XML<List<Cerveza>> xmlStockCerveza= new XML<List<Cerveza>>();
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/controlStockCerveza.xml";
             string pathErrorLog = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/errorsLog.txt";
 
@@ -139,9 +163,11 @@ namespace CervezaArtesanal
             {
                 RecetaCerveza receta = new RecetaCerveza(tipo, litros);
                 receta.CalcularIngredientes();
-                CervezaArtesanal cerveza;
-                
-                if(ValidarStockListaIngredientes(FabricaBebidas.stockIngredientes, receta))
+                Cerveza cerveza;
+                Fermentador fermentador = BuscarFermentadorDisponible(receta);
+
+                if(ValidarStockListaIngredientes(FabricaBebidas.stockIngredientes, receta) &&
+                    fermentador != null)
                 {
                     if (tipo is ETipoCerveza.IPA)
                     {
@@ -154,6 +180,7 @@ namespace CervezaArtesanal
                         controlStockCerveza.Add(cerveza);
                     }
                     CalcularIngredientesRestantes(receta);
+                    fermentador.CapacidadLitros = receta.LitrosAPreparar;
                     estaCocinando = true;
                     xmlStockCerveza.Guardar(path, FabricaBebidas.controlStockCerveza);
                 }
