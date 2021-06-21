@@ -1,9 +1,5 @@
 ﻿using CervezaArtesanal.DAO;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CervezaArtesanal
 {
@@ -46,45 +42,22 @@ namespace CervezaArtesanal
             }
         }
 
-        /// <summary>
+         /// <summary>
         /// Calcula los ingredientes necesarios de acuerdo al tipo de cerveza y la cantidad de litros a preparar
         /// </summary>
         /// <returns>Devuelve una receta de cerveza</returns>
-        //public override Receta CalcularIngredientes()
-        //{
-        //    if (this.tipoCerveza is ETipoCerveza.IPA)
-        //    {
-        //        base.ingredientes.Add(EIngredientes.Lupulo, 250 * this.litrosAPreparar);
-        //        base.ingredientes.Add(EIngredientes.Malta, 169 * this.litrosAPreparar);
-        //        base.ingredientes.Add(EIngredientes.Agua, 1000 * this.litrosAPreparar);
-        //    }
-        //    if (this.tipoCerveza is ETipoCerveza.Kolsh)
-        //    {
-        //        base.ingredientes.Add(EIngredientes.Lupulo, 200 * litrosAPreparar);
-        //        base.ingredientes.Add(EIngredientes.Malta, 200 * litrosAPreparar);
-        //        base.ingredientes.Add(EIngredientes.Agua, 1000 * litrosAPreparar);
-        //    }
-        //    return this;
-        //}
-
-        /// <summary>
-        /// Calcula los ingredientes necesarios de acuerdo al tipo de cerveza y la cantidad de litros a preparar
-        /// </summary>
-        /// <returns>Devuelve una receta de cerveza</returns>
-        public override Receta CalcularIngredientes()
+        public override void CalcularIngredientes()
         {
-            Dictionary<EIngredientes, float> auxIngredientes = new Dictionary<EIngredientes, float>();
+            List<Ingrediente> auxIngredientes = new List<Ingrediente>();
 
-            RecetaDAO dao = new RecetaDAO();
-            //auxIngredientes = dao.ConsultarIngredientesPorTipoCerveza(this.tipoCerveza);
-            auxIngredientes = dao.ConsultarIngredientesPorIdTipoCerveza(this.idTipoCerveza);
+            IngredienteDAO dao = new IngredienteDAO();
+            auxIngredientes = dao.ConsultarIngredientesPorIdTipoCerveza2(this.idTipoCerveza);
 
-            foreach (KeyValuePair<EIngredientes, float> i in auxIngredientes)
+            foreach (Ingrediente i in auxIngredientes)
             {
-                base.ingredientes.Add(i.Key, i.Value * this.litrosAPreparar);
+                base.ingredientes.Add(new Ingrediente(i.idIngrediente, i.ingredienteTipo, (i.stock * this.litrosAPreparar)));
             }
-
-            return this;
         }
+
     }
 }

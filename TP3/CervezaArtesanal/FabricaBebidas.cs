@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CervezaArtesanal.DAO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,8 @@ namespace CervezaArtesanal
     {
         public static List<Fermentador> listaFermentadores;
         public static List<Cerveza> controlStockCerveza;
-        public static Dictionary<EIngredientes, float> stockIngredientes;
+        //public static Dictionary<EIngredientes, float> stockIngredientes;
+        public static List<Ingrediente> stockIngredientes;
 
         /// <summary>
         /// Instancio las listas y el diccionario
@@ -22,15 +24,19 @@ namespace CervezaArtesanal
         {
             controlStockCerveza = new List<Cerveza>();
             listaFermentadores = new List<Fermentador>();
-            stockIngredientes = new Dictionary<EIngredientes, float>();
-        
+            stockIngredientes = new List<Ingrediente>();
+            //stockIngredientes = new Dictionary<EIngredientes, float>();
+
+            IngredienteDAO ingredientesDAO = new IngredienteDAO();
+            stockIngredientes = ingredientesDAO.ConsultarStockIngredientes();
+
             listaFermentadores.Add(new Fermentador(ETipoCerveza.Kolsh));
             listaFermentadores.Add(new Fermentador(ETipoCerveza.IPA, 30));
             listaFermentadores.Add(new Fermentador(ETipoCerveza.Kolsh));
 
-            stockIngredientes.Add(EIngredientes.Lupulo, 60000);///1000
-            stockIngredientes.Add(EIngredientes.Malta, 60000);///2000
-            stockIngredientes.Add(EIngredientes.Agua, 180000000);
+            //stockIngredientes.Add(EIngredientes.Lupulo, 60000);///1000
+            //stockIngredientes.Add(EIngredientes.Malta, 60000);///2000
+            //stockIngredientes.Add(EIngredientes.Agua, 180000000);
         }
 
         /// <summary>
@@ -44,7 +50,7 @@ namespace CervezaArtesanal
         /// <summary>
         /// Propiedad de solo lectura. Devuelve un diccionario cuyo par clave valor representa ingrediente y su cantidad en stock
         /// </summary>
-        public static Dictionary<EIngredientes, float> StockIngredientes
+        public static List<Ingrediente> StockIngredientes
         {
             get { return FabricaBebidas.stockIngredientes; }
             //set { myVar = value; }
@@ -56,22 +62,17 @@ namespace CervezaArtesanal
         /// <param name="ingrediente"></param>
         /// <param name="cantidad"></param>
         /// <returns></returns>
-        public static bool ValidarStockIngrediente(EIngredientes ingrediente, float cantidad)
+         public static bool ValidarStockIngrediente(EIngredientes ingrediente, float cantidad)
         {
             bool hayStock = false;
 
-            if (ingrediente == EIngredientes.Lupulo && FabricaBebidas.stockIngredientes[EIngredientes.Lupulo] >= cantidad)
+            foreach(Ingrediente i in FabricaBebidas.StockIngredientes)
             {
-                hayStock = true;
-            }
-            else if (ingrediente == EIngredientes.Malta && FabricaBebidas.stockIngredientes[EIngredientes.Lupulo] >= cantidad)
-            {
-                hayStock = true;
-            }
-            else if (ingrediente == EIngredientes.Agua)
-            {
-                hayStock = true;
-
+                if(ingrediente == i.ingredienteTipo && cantidad <= i.stock)
+                {
+                    hayStock = true;
+                    break;
+                }
             }
             return hayStock;
         }
@@ -80,25 +81,27 @@ namespace CervezaArtesanal
         /// Resta al stock los ingredientes usados para la fabrica
         /// </summary>
         /// <param name="receta">receta que contiene litros a preparar, ingredientes y sus cantidades</param>
-        public static void CalcularIngredientesRestantes(RecetaCerveza receta)
-        {
-            foreach (KeyValuePair<EIngredientes, float> i in receta.ingredientes)
-            {
-                if (i.Key == EIngredientes.Lupulo)
-                {
 
-                    FabricaBebidas.stockIngredientes[EIngredientes.Lupulo] = stockIngredientes[EIngredientes.Lupulo] - i.Value;
-                }
-                else if (i.Key == EIngredientes.Malta)
-                {
-                    FabricaBebidas.stockIngredientes[EIngredientes.Malta] = stockIngredientes[EIngredientes.Malta] - i.Value;
-                }
-                else if (i.Key == EIngredientes.Agua)
-                {
-                    FabricaBebidas.stockIngredientes[EIngredientes.Agua] = stockIngredientes[EIngredientes.Agua] - i.Value;
-                }
-            }
-        }
+        //public static void CalcularIngredientesRestantes(RecetaCerveza receta)
+        //{
+        //    foreach (KeyValuePair<EIngredientes, float> i in receta.ingredientes)
+        //    {
+        //        if (i.Key == EIngredientes.Lupulo)
+        //        {
+
+        //            FabricaBebidas.stockIngredientes[EIngredientes.Lupulo] = stockIngredientes[EIngredientes.Lupulo] - i.Value;
+        //        }
+        //        else if (i.Key == EIngredientes.Malta)
+        //        {
+        //            FabricaBebidas.stockIngredientes[EIngredientes.Malta] = stockIngredientes[EIngredientes.Malta] - i.Value;
+        //        }
+        //        else if (i.Key == EIngredientes.Agua)
+        //        {
+        //            FabricaBebidas.stockIngredientes[EIngredientes.Agua] = stockIngredientes[EIngredientes.Agua] - i.Value;
+        //        }
+        //    }
+        //}
+
 
         /// <summary>
         /// Valida haya suficiente stock de una lista ingredientes
@@ -106,13 +109,13 @@ namespace CervezaArtesanal
         /// <param name="stockIngredientes"></param>
         /// <param name="receta"></param>
         /// <returns></returns>
-        public static bool ValidarStockListaIngredientes(Dictionary<EIngredientes, float> stockIngredientes, RecetaCerveza receta)
+        public static bool ValidarStockListaIngredientes(List<Ingrediente> stockIngredientes, RecetaCerveza receta)
         {
             bool hayStock = true;
 
-            foreach (KeyValuePair<EIngredientes, float> i in receta.ingredientes)
+            foreach(Ingrediente i in receta.ingredientes)
             {
-                if (!ValidarStockIngrediente(i.Key, i.Value))
+                if (!ValidarStockIngrediente(i.ingredienteTipo, i.stock))
                 {
                     hayStock = false;
                     break;
@@ -120,7 +123,7 @@ namespace CervezaArtesanal
             }
             return hayStock;
         }
-         
+
         /// <summary>
         /// Busca un fermentador disponible teniendo en cuenta el tipo de cerveza que se va a guardar y la capacidad de almacenamiento
         /// </summary>
@@ -239,7 +242,7 @@ namespace CervezaArtesanal
                         cerveza = new CervezaKolsh(receta);
                         controlStockCerveza.Add(cerveza);
                     }
-                    CalcularIngredientesRestantes(receta);
+                    //CalcularIngredientesRestantes(receta);
                     fermentador.CapacidadLitros = receta.LitrosAPreparar;
                     estaCocinando = true;
                     xmlStockCerveza.Guardar(path, FabricaBebidas.controlStockCerveza);
@@ -255,11 +258,6 @@ namespace CervezaArtesanal
             }
             return estaCocinando;
         }
-
-
-
-
-
 
 
 

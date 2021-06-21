@@ -50,6 +50,8 @@
     <Compile Include="Cerveza\CervezaIPA.cs" />
     <Compile Include="Cerveza\CervezaKolsh.cs" />
     <Compile Include="Cerveza\EIngredientes.cs" />
+    <Compile Include="Cerveza\Ingrediente.cs" />
+    <Compile Include="DAO\IngredienteDAO.cs" />
     <Compile Include="DAO\RecetaDAO.cs" />
     <Compile Include="DBConexion.cs" />
     <Compile Include="Error.cs" />

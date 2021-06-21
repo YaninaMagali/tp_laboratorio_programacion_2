@@ -8,7 +8,7 @@ namespace CervezaArtesanal
 {
     interface IReceta
     {
-        Receta CalcularIngredientes();
+        void CalcularIngredientes();
         
     }
 }

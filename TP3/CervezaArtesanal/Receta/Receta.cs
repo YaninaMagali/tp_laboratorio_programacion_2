@@ -8,21 +8,21 @@ namespace CervezaArtesanal
 {
     public abstract class Receta : IReceta
     {
-        [NonSerialized()] public Dictionary<EIngredientes, float> ingredientes;
+        [NonSerialized()] public List<Ingrediente> ingredientes;
 
         /// <summary>
         /// Constructor sin parametros donde se asigna un diccionario instanciado al atributo ingredientes
         /// </summary>
         public Receta()
         { 
-            this.ingredientes = new Dictionary<EIngredientes, float>();
+            this.ingredientes = new List<Ingrediente>(); 
         }
 
         /// <summary>
         /// Constructor con parametros. Recibe los ingredientes y asigna al atributo de la clase 
         /// </summary>
         /// <param name="ingredientes"></param>
-        public Receta(Dictionary<EIngredientes, float> ingredientes) :this()
+        public Receta(List<Ingrediente> ingredientes) :this()
         {
             this.ingredientes = ingredientes;
         }
@@ -30,14 +30,15 @@ namespace CervezaArtesanal
         /// <summary>
         /// Propiedad de lectura y escritura por la cual se accede al dict de ingredientes y se asignan ingredientes a la receta 
         /// </summary>
-        public Dictionary<EIngredientes, float> Ingredientes
-        { 
+        public List<Ingrediente> Ingredientes
+        {
             get { return this.ingredientes; }
             set
             {
-                this.ingredientes = value;
+                if (value != null)
+                { this.ingredientes = value; }
             }
-        
+
         }
 
         /// <summary>
@@ -47,9 +48,9 @@ namespace CervezaArtesanal
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            foreach(KeyValuePair<EIngredientes, float> i in ingredientes)
+            foreach(Ingrediente i in ingredientes)
             { 
-                sb.AppendLine($"{i.Value.ToString()} gramos de {i.Key.ToString()} "); }
+                sb.AppendLine($"{i.stock.ToString()} gramos de {i.ingredienteTipo.ToString()} "); }
             
             return sb.ToString();
 
@@ -59,7 +60,7 @@ namespace CervezaArtesanal
         /// Calcula los ingredientes para una receta
         /// </summary>
         /// <returns>Devuelve una receta</returns>
-        public abstract Receta CalcularIngredientes();
+        public abstract void CalcularIngredientes();
 
     }
 }

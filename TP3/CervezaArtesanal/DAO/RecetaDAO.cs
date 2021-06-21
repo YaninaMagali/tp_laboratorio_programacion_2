@@ -23,117 +23,12 @@ namespace CervezaArtesanal.DAO
             this.comando.Connection = conexion.Conexion;
         }
 
+      
         /// <summary>
-        /// Consulta ingredientes y cantidad necesaria por litro de acuerdo al tipo de cerveza recibido
+        /// Consulta las recetas cargadas en la base
         /// </summary>
-        /// <param name="tipoCerveza">Tipo de cerveza cuyos ingredientes y cantidades se quieren cosnsultar</param>
-        /// <returns>Devuelve un diccionario con los ingredientes y cantidad necesaria por litro</returns>
-        public Dictionary<EIngredientes, float> ConsultarIngredientesPorTipoCerveza(ETipoCerveza tipoCerveza)
-        {
-            Dictionary<EIngredientes, float> ingredientesNecesarios = new Dictionary<EIngredientes, float>();
-
-            comando.CommandText = "SELECT Ingredientes.nombreIngrediente, IngredientesPorReceta.cantidadNecesaria " +
-                "FROM Recetas " +
-                "INNER JOIN IngredientesPorReceta on IngredientesPorReceta.idReceta = Recetas.idReceta " +
-                "INNER JOIN Ingredientes ON Ingredientes.idIngrediente = IngredientesPorReceta.IdIngrediente " +
-                "WHERE Recetas.nombreReceta = @tipo ";
-
-            comando.Parameters.AddWithValue("@tipo", tipoCerveza.ToString());
-
-            try
-            {
-                this.conexion.AbrirConexion();
-                SqlDataReader reader = this.comando.ExecuteReader();
-                while (reader.Read())
-                {
-                    float cantidadNecesaria;
-                    float.TryParse(reader["cantidadNecesaria"].ToString(), out cantidadNecesaria);
-                    EIngredientes ingrediente;
-                    Enum.TryParse<EIngredientes>(reader["nombreIngrediente"].ToString(), out ingrediente);
-
-                    ingredientesNecesarios.Add(ingrediente, cantidadNecesaria);
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                conexion.CerrarConexion();
-                comando.Parameters.Clear();
-            }
-            return ingredientesNecesarios;
-        }
-
-        public Dictionary<EIngredientes, float> ConsultarIngredientesPorIdTipoCerveza(int idTipoCerveza)
-        {
-            Dictionary<EIngredientes, float> ingredientesNecesarios = new Dictionary<EIngredientes, float>();
-
-            comando.CommandText = "SELECT Ingredientes.nombreIngrediente, IngredientesPorReceta.cantidadNecesaria " +
-                "FROM Recetas " +
-                "INNER JOIN IngredientesPorReceta on IngredientesPorReceta.idReceta = Recetas.idReceta " +
-                "INNER JOIN Ingredientes ON Ingredientes.idIngrediente = IngredientesPorReceta.IdIngrediente " +
-                "WHERE Recetas.idReceta = @id ";
-
-            comando.Parameters.AddWithValue("@id", idTipoCerveza);
-
-            try
-            {
-                this.conexion.AbrirConexion();
-                SqlDataReader reader = this.comando.ExecuteReader();
-                while (reader.Read())
-                {
-                    float cantidadNecesaria;
-                    float.TryParse(reader["cantidadNecesaria"].ToString(), out cantidadNecesaria);
-                    EIngredientes ingrediente;
-                    Enum.TryParse<EIngredientes>(reader["nombreIngrediente"].ToString(), out ingrediente);
-
-                    ingredientesNecesarios.Add(ingrediente, cantidadNecesaria);
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                conexion.CerrarConexion();
-                comando.Parameters.Clear();
-            }
-            return ingredientesNecesarios;
-        }
-        public List<string> ConsultarNombresReceta()
-        {
-            List<string> recetasPorTipoCerveza = new List<string>();
-            comando.CommandText = "SELECT nombreReceta FROM Recetas";
-
-            try
-            {
-                this.conexion.AbrirConexion();
-                SqlDataReader reader = this.comando.ExecuteReader();
-                while (reader.Read())
-                {
-                    int idReceta;
-                    int.TryParse(reader["idReceta"].ToString(), out idReceta);
-                    string tipoCerveza = (reader["nombreReceta"].ToString());
-                    recetasPorTipoCerveza.Add(tipoCerveza);
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                conexion.CerrarConexion();
-                comando.Parameters.Clear();
-            }
-            return recetasPorTipoCerveza;
-        }
-
-
-        public Dictionary<string, int> ConsultarReceta()
+        /// <returns>Devuelve un diccionario con los id y nombres de las recetas</returns>
+        public Dictionary<string, int> ConsultarRecetas()
         {
             Dictionary<string, int> recetas = new Dictionary<string, int>();
             comando.CommandText = "SELECT * FROM Recetas";
