@@ -9,20 +9,23 @@ namespace CervezaArtesanal
 {
     public class RecetaCerveza : Receta
     {
-        public float litrosAPreparar;
+        public int idTipoCerveza;
         public ETipoCerveza tipoCerveza;
+        public float litrosAPreparar;
 
         public RecetaCerveza() : base() { }
 
         /// <summary>
         /// Constructor con parametros. Asigna valores recibidos por parametro a los atributos de la clase. Invoca tambien al constructor de la clase base
         /// </summary>
+        /// <param name="idTipoCerveza">id del tipo de cerveza a preparar</param>
         /// <param name="tipoCerveza">enum de tipo de cerveza a preparar</param>
         /// <param name="litrosAPreparar">cantidad de litros a preparar</param>
-        public RecetaCerveza(ETipoCerveza tipoCerveza, float litrosAPreparar) : base()
+        public RecetaCerveza(int idTipoCerveza, ETipoCerveza tipoCerveza, float litrosAPreparar) : base()
         {
             LitrosAPreparar = litrosAPreparar;
             this.tipoCerveza = tipoCerveza;
+            this.idTipoCerveza = idTipoCerveza;
         }
 
         /// <summary>
@@ -73,7 +76,8 @@ namespace CervezaArtesanal
             Dictionary<EIngredientes, float> auxIngredientes = new Dictionary<EIngredientes, float>();
 
             RecetaDAO dao = new RecetaDAO();
-            auxIngredientes = dao.ConsultarIngredientesPorTipoCerveza(this.tipoCerveza);
+            //auxIngredientes = dao.ConsultarIngredientesPorTipoCerveza(this.tipoCerveza);
+            auxIngredientes = dao.ConsultarIngredientesPorIdTipoCerveza(this.idTipoCerveza);
 
             foreach (KeyValuePair<EIngredientes, float> i in auxIngredientes)
             {

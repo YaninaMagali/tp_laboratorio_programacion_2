@@ -151,30 +151,90 @@ namespace CervezaArtesanal
         /// <param name="tipo"></param>
         /// <param name="litros"></param>
         /// <returns>Devuelve true si puede empezar a cocinar la cerveza, false caso contrario</returns>
-        public static bool Cocinar(ETipoCerveza tipo, float litros)
+        //public static bool CocinarOld(ETipoCerveza tipo, float litros)
+        //{
+        //    bool estaCocinando = false;
+        //    Texto<string> archivoLog = new Texto<string>();
+        //    XML<List<Cerveza>> xmlStockCerveza= new XML<List<Cerveza>>();
+        //    string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/controlStockCerveza.xml";
+        //    string pathErrorLog = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/errorsLog.txt";
+
+        //    try
+        //    {
+        //        RecetaCerveza receta = new RecetaCerveza(tipo, litros);
+        //        receta.CalcularIngredientes();
+        //        Cerveza cerveza;
+        //        Fermentador fermentador = BuscarFermentadorDisponible(receta);
+
+        //        if(ValidarStockListaIngredientes(FabricaBebidas.stockIngredientes, receta) &&
+        //            fermentador != null)
+        //        {
+        //            if (tipo is ETipoCerveza.IPA)
+        //            {
+        //                cerveza = new CervezaIPA(receta);
+        //                controlStockCerveza.Add(cerveza);
+        //            }
+        //            else if (tipo is ETipoCerveza.Kolsh)
+        //            {
+        //                cerveza = new CervezaKolsh(receta);
+        //                controlStockCerveza.Add(cerveza);
+        //            }
+        //            CalcularIngredientesRestantes(receta);
+        //            fermentador.CapacidadLitros = receta.LitrosAPreparar;
+        //            estaCocinando = true;
+        //            xmlStockCerveza.Guardar(path, FabricaBebidas.controlStockCerveza);
+        //        }
+        //     }
+        //    catch (LitrosAPrepararExcepcion ex)
+        //    {
+        //        archivoLog.Guardar(pathErrorLog, new Error(ex).ToString());
+        //    }
+        //    catch (NullReferenceException ex)
+        //    {
+        //        archivoLog.Guardar(pathErrorLog, new Error(ex).ToString());
+        //    }
+        //    return estaCocinando;
+        //}
+
+
+        /// <summary>
+        /// Empieza a cocinar la cerveza siempre que haya stock de ingredientes necesarios
+        /// Si falla se guarda el error en un archivo de log
+        /// Si puede empezar a cocinar se suma la cerveza al stock actual y se restan delstock de ingredientes los utilizados
+        /// </summary>
+        /// <param name="idTipoCerveza"></param>
+        /// <param name="tipo"></param>
+        /// <param name="litros"></param>
+        /// <returns>Devuelve true si puede empezar a cocinar la cerveza, false caso contrario</returns>
+        public static bool Cocinar(int idTipoCerveza, string tipoReceta, float litros)
         {
+            
             bool estaCocinando = false;
+            ETipoCerveza tipoCervezaAux;
+
             Texto<string> archivoLog = new Texto<string>();
-            XML<List<Cerveza>> xmlStockCerveza= new XML<List<Cerveza>>();
+            XML<List<Cerveza>> xmlStockCerveza = new XML<List<Cerveza>>();
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/controlStockCerveza.xml";
             string pathErrorLog = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/errorsLog.txt";
 
             try
             {
-                RecetaCerveza receta = new RecetaCerveza(tipo, litros);
+                Enum.TryParse<ETipoCerveza>(tipoReceta, out tipoCervezaAux);
+                RecetaCerveza receta = new RecetaCerveza(idTipoCerveza, tipoCervezaAux, litros);
                 receta.CalcularIngredientes();
                 Cerveza cerveza;
                 Fermentador fermentador = BuscarFermentadorDisponible(receta);
 
-                if(ValidarStockListaIngredientes(FabricaBebidas.stockIngredientes, receta) &&
-                    fermentador != null)
+                if (fermentador != null && 
+                    ValidarStockListaIngredientes(FabricaBebidas.stockIngredientes, receta)
+                    )
                 {
-                    if (tipo is ETipoCerveza.IPA)
+                    if (tipoCervezaAux is ETipoCerveza.IPA)
                     {
                         cerveza = new CervezaIPA(receta);
                         controlStockCerveza.Add(cerveza);
                     }
-                    else if (tipo is ETipoCerveza.Kolsh)
+                    else if (tipoCervezaAux is ETipoCerveza.Kolsh)
                     {
                         cerveza = new CervezaKolsh(receta);
                         controlStockCerveza.Add(cerveza);
@@ -184,7 +244,7 @@ namespace CervezaArtesanal
                     estaCocinando = true;
                     xmlStockCerveza.Guardar(path, FabricaBebidas.controlStockCerveza);
                 }
-             }
+            }
             catch (LitrosAPrepararExcepcion ex)
             {
                 archivoLog.Guardar(pathErrorLog, new Error(ex).ToString());
@@ -194,14 +254,14 @@ namespace CervezaArtesanal
                 archivoLog.Guardar(pathErrorLog, new Error(ex).ToString());
             }
             return estaCocinando;
-        }   
-
-
-        
-        
-    
+        }
 
 
 
-    }
+
+
+
+
+
+        }
 }

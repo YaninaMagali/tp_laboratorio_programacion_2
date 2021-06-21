@@ -8,7 +8,7 @@ namespace CervezaArtesanal
 {
     public abstract class Receta : IReceta
     {
-        public Dictionary<EIngredientes, float> ingredientes;
+        [NonSerialized()] public Dictionary<EIngredientes, float> ingredientes;
 
         /// <summary>
         /// Constructor sin parametros donde se asigna un diccionario instanciado al atributo ingredientes

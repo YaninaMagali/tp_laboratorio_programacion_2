@@ -10,12 +10,14 @@ namespace CervezaArtesanal
     [Serializable]
     [XmlInclude(typeof(CervezaIPA))]
     [XmlInclude(typeof(CervezaKolsh))]
+    //[XmlInclude(typeof(RecetaCerveza))]
 
     public abstract class Cerveza
     {
         public ETipoCerveza tipo;
-        [NonSerialized()]private RecetaCerveza receta;
-        
+        //[NonSerialized()] private RecetaCerveza receta;
+        private RecetaCerveza receta;
+
         /// <summary>
         /// Constructor sin parametros para permitir la serializacion
         /// </summary>
