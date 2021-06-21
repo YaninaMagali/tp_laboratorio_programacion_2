@@ -19,6 +19,15 @@ namespace CervezaArtesanal
         }
 
         /// <summary>
+        /// Constructor con parametros. Recibe los ingredientes y asigna al atributo de la clase 
+        /// </summary>
+        /// <param name="ingredientes"></param>
+        public Receta(Dictionary<EIngredientes, float> ingredientes) :this()
+        {
+            this.ingredientes = ingredientes;
+        }
+
+        /// <summary>
         /// Propiedad de lectura y escritura por la cual se accede al dict de ingredientes y se asignan ingredientes a la receta 
         /// </summary>
         public Dictionary<EIngredientes, float> Ingredientes
@@ -51,5 +60,6 @@ namespace CervezaArtesanal
         /// </summary>
         /// <returns>Devuelve una receta</returns>
         public abstract Receta CalcularIngredientes();
+
     }
 }

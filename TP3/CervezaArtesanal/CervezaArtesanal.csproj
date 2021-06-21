@@ -50,6 +50,8 @@
     <Compile Include="Cerveza\CervezaIPA.cs" />
     <Compile Include="Cerveza\CervezaKolsh.cs" />
     <Compile Include="Cerveza\EIngredientes.cs" />
+    <Compile Include="DAO\RecetaDAO.cs" />
+    <Compile Include="DBConexion.cs" />
     <Compile Include="Error.cs" />
     <Compile Include="Cerveza\ETipoCerveza.cs" />
     <Compile Include="FabricaBebidas.cs" />
@@ -63,9 +65,10 @@
     </Compile>
     <Compile Include="Receta\Receta.cs" />
     <Compile Include="Receta\RecetaCerveza.cs" />
-    <Compile Include="Receta\RecetaExcepcion.cs" />
+    <Compile Include="Receta\LitrosAPrepararExcepcion.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

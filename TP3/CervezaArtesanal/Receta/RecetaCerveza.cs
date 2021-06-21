@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CervezaArtesanal.DAO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,12 +12,14 @@ namespace CervezaArtesanal
         public float litrosAPreparar;
         public ETipoCerveza tipoCerveza;
 
+        public RecetaCerveza() : base() { }
+
         /// <summary>
         /// Constructor con parametros. Asigna valores recibidos por parametro a los atributos de la clase. Invoca tambien al constructor de la clase base
         /// </summary>
         /// <param name="tipoCerveza">enum de tipo de cerveza a preparar</param>
         /// <param name="litrosAPreparar">cantidad de litros a preparar</param>
-        public RecetaCerveza(ETipoCerveza tipoCerveza, float litrosAPreparar) : base ()
+        public RecetaCerveza(ETipoCerveza tipoCerveza, float litrosAPreparar) : base()
         {
             LitrosAPreparar = litrosAPreparar;
             this.tipoCerveza = tipoCerveza;
@@ -36,7 +39,7 @@ namespace CervezaArtesanal
                 if (value > 0)
                 { this.litrosAPreparar = value; }
                 else
-                { throw new RecetaExcepcion("Para calcular una receta los litros ingresados deben ser mayor a cero"); }
+                { throw new LitrosAPrepararExcepcion("Para calcular una receta los litros ingresados deben ser mayor a cero"); }
             }
         }
 
@@ -44,21 +47,39 @@ namespace CervezaArtesanal
         /// Calcula los ingredientes necesarios de acuerdo al tipo de cerveza y la cantidad de litros a preparar
         /// </summary>
         /// <returns>Devuelve una receta de cerveza</returns>
+        //public override Receta CalcularIngredientes()
+        //{
+        //    if (this.tipoCerveza is ETipoCerveza.IPA)
+        //    {
+        //        base.ingredientes.Add(EIngredientes.Lupulo, 250 * this.litrosAPreparar);
+        //        base.ingredientes.Add(EIngredientes.Malta, 169 * this.litrosAPreparar);
+        //        base.ingredientes.Add(EIngredientes.Agua, 1000 * this.litrosAPreparar);
+        //    }
+        //    if (this.tipoCerveza is ETipoCerveza.Kolsh)
+        //    {
+        //        base.ingredientes.Add(EIngredientes.Lupulo, 200 * litrosAPreparar);
+        //        base.ingredientes.Add(EIngredientes.Malta, 200 * litrosAPreparar);
+        //        base.ingredientes.Add(EIngredientes.Agua, 1000 * litrosAPreparar);
+        //    }
+        //    return this;
+        //}
+
+        /// <summary>
+        /// Calcula los ingredientes necesarios de acuerdo al tipo de cerveza y la cantidad de litros a preparar
+        /// </summary>
+        /// <returns>Devuelve una receta de cerveza</returns>
         public override Receta CalcularIngredientes()
         {
+            Dictionary<EIngredientes, float> auxIngredientes = new Dictionary<EIngredientes, float>();
 
-            if (this.tipoCerveza is ETipoCerveza.IPA)
+            RecetaDAO dao = new RecetaDAO();
+            auxIngredientes = dao.ConsultarRecetasPorTipoCerveza(this.tipoCerveza);
+
+            foreach (KeyValuePair<EIngredientes, float> i in auxIngredientes)
             {
-                this.ingredientes.Add(EIngredientes.Lupulo, 300 * this.litrosAPreparar);
-                this.ingredientes.Add(EIngredientes.Malta, 250 * this.litrosAPreparar);
-                this.ingredientes.Add(EIngredientes.Agua, 1000 * this.litrosAPreparar);
+                base.ingredientes.Add(i.Key, i.Value * this.litrosAPreparar);
             }
-            if (this.tipoCerveza is ETipoCerveza.Kolsh)
-            {
-                this.ingredientes.Add(EIngredientes.Lupulo, 200 * litrosAPreparar);
-                this.ingredientes.Add(EIngredientes.Malta, 200 * litrosAPreparar);
-                this.ingredientes.Add(EIngredientes.Agua, 1000 * litrosAPreparar);
-            }
+
             return this;
         }
     }

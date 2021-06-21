@@ -185,7 +185,7 @@ namespace CervezaArtesanal
                     xmlStockCerveza.Guardar(path, FabricaBebidas.controlStockCerveza);
                 }
              }
-            catch (RecetaExcepcion ex)
+            catch (LitrosAPrepararExcepcion ex)
             {
                 archivoLog.Guardar(pathErrorLog, new Error(ex).ToString());
             }
