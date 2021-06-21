@@ -73,7 +73,7 @@ namespace CervezaArtesanal
             Dictionary<EIngredientes, float> auxIngredientes = new Dictionary<EIngredientes, float>();
 
             RecetaDAO dao = new RecetaDAO();
-            auxIngredientes = dao.ConsultarRecetasPorTipoCerveza(this.tipoCerveza);
+            auxIngredientes = dao.ConsultarIngredientesPorTipoCerveza(this.tipoCerveza);
 
             foreach (KeyValuePair<EIngredientes, float> i in auxIngredientes)
             {

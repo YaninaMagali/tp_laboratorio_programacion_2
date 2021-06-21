@@ -28,7 +28,7 @@ namespace CervezaArtesanal.DAO
         /// </summary>
         /// <param name="tipoCerveza">Tipo de cerveza cuyos ingredientes y cantidades se quieren cosnsultar</param>
         /// <returns>Devuelve un diccionario con los ingredientes y cantidad necesaria por litro</returns>
-        public Dictionary<EIngredientes, float> ConsultarRecetasPorTipoCerveza(ETipoCerveza tipoCerveza)
+        public Dictionary<EIngredientes, float> ConsultarIngredientesPorTipoCerveza(ETipoCerveza tipoCerveza)
         {
             Dictionary<EIngredientes, float> ingredientesNecesarios = new Dictionary<EIngredientes, float>();
 
@@ -64,6 +64,38 @@ namespace CervezaArtesanal.DAO
                 comando.Parameters.Clear();
             }
             return ingredientesNecesarios;
+        }
+
+
+        public List<string> ConsultarNombresReceta()
+        {
+            List<string> recetasPorTipoCerveza = new List<string>();
+            comando.CommandText = "SELECT nombreReceta FROM Recetas";
+
+            try
+            {
+                this.conexion.AbrirConexion();
+                SqlDataReader reader = this.comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    //int idReceta;
+                    //int.TryParse(reader["idReceta"].ToString(), out idReceta);
+                    
+                    string tipoCerveza = (reader["nombreReceta"].ToString());
+                    recetasPorTipoCerveza.Add(tipoCerveza);
+                    //ingredientesNecesarios.Add(ingrediente, cantidadNecesaria);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conexion.CerrarConexion();
+                comando.Parameters.Clear();
+            }
+            return recetasPorTipoCerveza;
         }
     }
 }
