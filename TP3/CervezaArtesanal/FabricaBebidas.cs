@@ -11,7 +11,6 @@ namespace CervezaArtesanal
     {
         public static List<Fermentador> listaFermentadores;
         public static List<Cerveza> controlStockCerveza;
-        //public static Dictionary<EIngredientes, float> stockIngredientes;
         public static List<Ingrediente> stockIngredientes;
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace CervezaArtesanal
             controlStockCerveza = new List<Cerveza>();
             listaFermentadores = new List<Fermentador>();
             stockIngredientes = new List<Ingrediente>();
-            //stockIngredientes = new Dictionary<EIngredientes, float>();
 
             IngredienteDAO ingredientesDAO = new IngredienteDAO();
             stockIngredientes = ingredientesDAO.ConsultarStockIngredientes();
@@ -33,10 +31,6 @@ namespace CervezaArtesanal
             listaFermentadores.Add(new Fermentador(ETipoCerveza.Kolsh));
             listaFermentadores.Add(new Fermentador(ETipoCerveza.IPA, 30));
             listaFermentadores.Add(new Fermentador(ETipoCerveza.Kolsh));
-
-            //stockIngredientes.Add(EIngredientes.Lupulo, 60000);///1000
-            //stockIngredientes.Add(EIngredientes.Malta, 60000);///2000
-            //stockIngredientes.Add(EIngredientes.Agua, 180000000);
         }
 
         /// <summary>

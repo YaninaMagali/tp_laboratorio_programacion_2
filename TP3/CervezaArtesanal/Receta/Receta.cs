@@ -8,7 +8,8 @@ namespace CervezaArtesanal
 {
     public abstract class Receta : IReceta
     {
-        [NonSerialized()] public List<Ingrediente> ingredientes;
+        //[NonSerialized()] 
+        public List<Ingrediente> ingredientes;
 
         /// <summary>
         /// Constructor sin parametros donde se asigna un diccionario instanciado al atributo ingredientes

@@ -12,6 +12,7 @@ namespace CervezaArtesanal
         public EIngredientes ingredienteTipo;
         public float stock;
 
+        public Ingrediente() { }
         public Ingrediente(int idIngrediente, EIngredientes ingrediente, float stock)
         {
             this.idIngrediente = idIngrediente;
