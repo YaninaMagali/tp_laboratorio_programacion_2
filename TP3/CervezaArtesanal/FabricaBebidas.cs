@@ -55,7 +55,7 @@ namespace CervezaArtesanal
         }
 
         /// <summary>
-        /// Propiedad de solo lectura. Devuelve un diccionario cuyo par clave valor representa ingrediente y su cantidad en stock
+        /// Propiedad de solo lectura. Devuelve una lista de ingredientes
         /// </summary>
         public static List<Ingrediente> StockIngredientes
         {
@@ -69,15 +69,36 @@ namespace CervezaArtesanal
         /// <param name="ingrediente"></param>
         /// <param name="cantidad"></param>
         /// <returns></returns>
-         public static bool ValidarStockIngrediente(EIngredientes ingrediente, float cantidad)
+         public static bool ValidarStockIngrediente(int idIngrediente, float cantidad)
         {
             bool hayStock = false;
 
             foreach(Ingrediente i in FabricaBebidas.StockIngredientes)
             {
-                if(ingrediente == i.ingredienteTipo && cantidad <= i.stock)
+                if(idIngrediente == i.idIngrediente && cantidad <= i.stock)
                 {
                     hayStock = true;
+                    break;
+                }
+            }
+            return hayStock;
+        }
+
+        /// <summary>
+        /// Valida haya suficiente stock de una lista ingredientes
+        /// </summary>
+        /// <param name="stockIngredientes"></param>
+        /// <param name="receta"></param>
+        /// <returns></returns>
+        public static bool ValidarStockListaIngredientes(RecetaCerveza receta)
+        {
+            bool hayStock = true;
+
+            foreach (Ingrediente i in receta.ingredientes)
+            {
+                if (!ValidarStockIngrediente(i.idIngrediente, i.stock))
+                {
+                    hayStock = false;
                     break;
                 }
             }
@@ -112,27 +133,6 @@ namespace CervezaArtesanal
         }
 
         /// <summary>
-        /// Valida haya suficiente stock de una lista ingredientes
-        /// </summary>
-        /// <param name="stockIngredientes"></param>
-        /// <param name="receta"></param>
-        /// <returns></returns>
-        public static bool ValidarStockListaIngredientes(List<Ingrediente> stockIngredientes, RecetaCerveza receta)
-        {
-            bool hayStock = true;
-
-            foreach(Ingrediente i in receta.ingredientes)
-            {
-                if (!ValidarStockIngrediente(i.ingredienteTipo, i.stock))
-                {
-                    hayStock = false;
-                    break;
-                }
-            }
-            return hayStock;
-        }
-
-        /// <summary>
         /// Busca un fermentador disponible teniendo en cuenta el tipo de cerveza que se va a guardar y la capacidad de almacenamiento
         /// </summary>
         /// <param name="receta"></param>
@@ -153,60 +153,6 @@ namespace CervezaArtesanal
             }
             return fermentadorDisponible;
         }
-
-        /// <summary>
-        /// Empieza a cocinar la cerveza siempre que haya stock de ingrdientes necesarios
-        /// Si falla se guarda el error en un archivo de log
-        /// Si puede empezar a cocinar se suma la cerveza al stock actual y se restan delstock de ingredientes los utilizados
-        /// </summary>
-        /// <param name="tipo"></param>
-        /// <param name="litros"></param>
-        /// <returns>Devuelve true si puede empezar a cocinar la cerveza, false caso contrario</returns>
-        //public static bool CocinarOld(ETipoCerveza tipo, float litros)
-        //{
-        //    bool estaCocinando = false;
-        //    Texto<string> archivoLog = new Texto<string>();
-        //    XML<List<Cerveza>> xmlStockCerveza= new XML<List<Cerveza>>();
-        //    string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/controlStockCerveza.xml";
-        //    string pathErrorLog = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/errorsLog.txt";
-
-        //    try
-        //    {
-        //        RecetaCerveza receta = new RecetaCerveza(tipo, litros);
-        //        receta.CalcularIngredientes();
-        //        Cerveza cerveza;
-        //        Fermentador fermentador = BuscarFermentadorDisponible(receta);
-
-        //        if(ValidarStockListaIngredientes(FabricaBebidas.stockIngredientes, receta) &&
-        //            fermentador != null)
-        //        {
-        //            if (tipo is ETipoCerveza.IPA)
-        //            {
-        //                cerveza = new CervezaIPA(receta);
-        //                controlStockCerveza.Add(cerveza);
-        //            }
-        //            else if (tipo is ETipoCerveza.Kolsh)
-        //            {
-        //                cerveza = new CervezaKolsh(receta);
-        //                controlStockCerveza.Add(cerveza);
-        //            }
-        //            CalcularIngredientesRestantes(receta);
-        //            fermentador.CapacidadLitros = receta.LitrosAPreparar;
-        //            estaCocinando = true;
-        //            xmlStockCerveza.Guardar(path, FabricaBebidas.controlStockCerveza);
-        //        }
-        //     }
-        //    catch (LitrosAPrepararExcepcion ex)
-        //    {
-        //        archivoLog.Guardar(pathErrorLog, new Error(ex).ToString());
-        //    }
-        //    catch (NullReferenceException ex)
-        //    {
-        //        archivoLog.Guardar(pathErrorLog, new Error(ex).ToString());
-        //    }
-        //    return estaCocinando;
-        //}
-
 
         /// <summary>
         /// Empieza a cocinar la cerveza siempre que haya stock de ingredientes necesarios
@@ -232,7 +178,7 @@ namespace CervezaArtesanal
                 Fermentador fermentador = BuscarFermentadorDisponible(receta);
 
                 if (fermentador != null && 
-                    ValidarStockListaIngredientes(FabricaBebidas.stockIngredientes, receta)
+                    ValidarStockListaIngredientes(receta)
                     )
                 {
                     if (tipoCervezaAux is ETipoCerveza.IPA)

@@ -59,7 +59,7 @@ namespace CervezaArtesanal.DAO
             return ingredientes;
         }
 
-        public List<Ingrediente> ConsultarIngredientesPorIdTipoCerveza2(int idTipoCerveza)
+        public List<Ingrediente> ConsultarIngredientesPorIdTipoCerveza(int idTipoCerveza)
         {
             List<Ingrediente> ingredientesNecesarios = new List<Ingrediente>();
 
@@ -100,14 +100,10 @@ namespace CervezaArtesanal.DAO
             return ingredientesNecesarios;
         }
 
-
         public void ActualizarStockIngredientes(List<Ingrediente> ingredientes)
         {
-
             comando.CommandText = "UPDATE Ingredientes SET stockIngrediente = @stockIngrediente " +
                 "WHERE idIngrediente = @idIngrediente;";
-
-            
 
             try
             {

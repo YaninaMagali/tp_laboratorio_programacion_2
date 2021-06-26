@@ -21,7 +21,7 @@ namespace Test
                 Console.WriteLine("Pudo crear receta");
             }
 
-            if (FabricaBebidas.ValidarStockIngrediente(EIngredientes.Agua, 100))
+            if (FabricaBebidas.ValidarStockIngrediente(4,100))
             {
                 Console.WriteLine("Hay stock ingredientes ");
             }

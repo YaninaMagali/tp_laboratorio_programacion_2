@@ -51,7 +51,7 @@ namespace CervezaArtesanal
             List<Ingrediente> auxIngredientes = new List<Ingrediente>();
 
             IngredienteDAO dao = new IngredienteDAO();
-            auxIngredientes = dao.ConsultarIngredientesPorIdTipoCerveza2(this.idTipoCerveza);
+            auxIngredientes = dao.ConsultarIngredientesPorIdTipoCerveza(this.idTipoCerveza);
 
             foreach (Ingrediente i in auxIngredientes)
             {

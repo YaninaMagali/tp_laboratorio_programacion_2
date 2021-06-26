@@ -9,46 +9,36 @@ namespace CervezaArtesanalTest
     public class FabricaBebidasTest
     {
         [TestMethod]
-        [DataRow(2000, EIngredientes.Malta)]
-        [DataRow(9999, EIngredientes.Lupulo)]
-        [DataRow(10000, EIngredientes.Lupulo)]
-        public void TestValidarStockIngredienteTrue(int cantidad, EIngredientes ingrediente)
+        [DataRow(1)]
+        public void TestValidarStockIngredienteTrue(int idIngrediente)
         {
-            Dictionary<EIngredientes, float> stock = new Dictionary<EIngredientes, float>();
-            stock.Add(EIngredientes.Lupulo, 5);
-            stock.Add(EIngredientes.Malta, 1);
-            Assert.IsTrue(FabricaBebidas.ValidarStockIngrediente(ingrediente, cantidad));
+            float stockLupulo = FabricaBebidas.StockIngredientes[0].Stock;
+            Assert.IsTrue(FabricaBebidas.ValidarStockIngrediente(idIngrediente, stockLupulo));
+            Assert.IsTrue(FabricaBebidas.ValidarStockIngrediente(idIngrediente, stockLupulo-1));
         }
 
         [TestMethod]
-        [DataRow(20001, EIngredientes.Malta)]
-        [DataRow(10001, EIngredientes.Lupulo)]
-        public void TestValidarStockIngredienteFalse(int cantidad, EIngredientes ingrediente)
+        [DataRow(1)]
+        public void TestValidarStockIngredienteFalse(int idIngrediente)
         {
-            Assert.IsFalse(FabricaBebidas.ValidarStockIngrediente(ingrediente, cantidad));
+            float i = FabricaBebidas.StockIngredientes[0].Stock;
+            Assert.IsFalse(FabricaBebidas.ValidarStockIngrediente(idIngrediente, i + 1));
         }
 
-        //[TestMethod]
-        //public void TestCalcularStockRestante()
-        //{
-        //    float auxLupulo = 0;
-        //    float auxMalta = 0;
-        //    float auxAgua = 0;
+        [TestMethod]
+        [DataRow(1)]
+        [DataRow(2)]
+        public void TestCalcularStockIngredienteRestante(int cantidadARestar)
+        {
+            Ingrediente ingredienteARestar = new Ingrediente(1, EIngredientes.Lupulo, cantidadARestar);
+            float stockLupulo = FabricaBebidas.StockIngredientes[0].Stock;
+            float auxStockLupulo = stockLupulo - cantidadARestar;
 
-        //    RecetaCerveza auxReceta = new RecetaCerveza(ETipoCerveza.IPA, 1);
-        //    auxReceta.CalcularIngredientes();
+            FabricaBebidas.CalcularStockRestantePorIngrediente(ingredienteARestar);
 
-        //    auxLupulo = FabricaBebidas.stockIngredientes[EIngredientes.Lupulo] - auxReceta.ingredientes[EIngredientes.Lupulo];
-        //    auxMalta = FabricaBebidas.stockIngredientes[EIngredientes.Malta] - auxReceta.ingredientes[EIngredientes.Malta];
-        //    auxAgua = FabricaBebidas.stockIngredientes[EIngredientes.Agua] - auxReceta.ingredientes[EIngredientes.Agua];
-            
-        //    FabricaBebidas.CalcularIngredientesRestantes(auxReceta);
+            Assert.AreEqual(auxStockLupulo, FabricaBebidas.StockIngredientes[0].Stock);
 
-        //    Assert.AreEqual(auxLupulo, FabricaBebidas.StockIngredientes[EIngredientes.Lupulo]);
-        //    Assert.AreEqual(auxMalta, FabricaBebidas.StockIngredientes[EIngredientes.Malta]);
-        //    Assert.AreEqual(auxAgua, FabricaBebidas.StockIngredientes[EIngredientes.Agua]);
-
-        //}
+        }
     }
 }
 
