@@ -9,26 +9,26 @@ namespace CervezaArtesanalTest
     public class RecetaTest
     {
         [TestMethod]
-        [DataRow(ETipoCerveza.IPA, 2)]
-        public void TestCrearRecetaOk(ETipoCerveza tipoCerveza, int litrosAPrepa)
+        [DataRow(1, ETipoCerveza.IPA, 2)]
+        public void TestCrearRecetaOk(ETipoCerveza tipoCerveza, int idTipoCerveza, int litrosAPrepa)
         {
-            Assert.IsNotNull(new RecetaCerveza(tipoCerveza, litrosAPrepa));
+            Assert.IsNotNull(new RecetaCerveza(idTipoCerveza, tipoCerveza, litrosAPrepa));
         }
 
         [TestMethod]
-        [DataRow(ETipoCerveza.IPA, -1)]
-        [DataRow(ETipoCerveza.IPA, 0)]
-        [ExpectedException(typeof(RecetaExcepcion))]
-        public void TestCrearRecetaLitrosMenorA1(ETipoCerveza tipoCerveza, int litrosAPrepa)
+        [DataRow(1, ETipoCerveza.IPA, -1)]
+        [DataRow(1, ETipoCerveza.IPA, 0)]
+        [ExpectedException(typeof(LitrosAPrepararExcepcion))]
+        public void TestCrearRecetaLitrosMenorA1(int idTipoCerveza, ETipoCerveza tipoCerveza, int litrosAPrepa)
         {
-            new RecetaCerveza(tipoCerveza, litrosAPrepa);
+            new RecetaCerveza(idTipoCerveza, tipoCerveza, litrosAPrepa);
         }
 
         [TestMethod]
-        [DataRow(ETipoCerveza.IPA, 2)]
-        public void TestCalcularIngredientesIPA(ETipoCerveza tipo, int cantidad)
+        [DataRow(1, ETipoCerveza.IPA, 2)]
+        public void TestCalcularIngredientesIPA(int idTipoCerveza, ETipoCerveza tipo, int cantidad)
         {
-            Receta receta = new RecetaCerveza(tipo, cantidad);
+            Receta receta = new RecetaCerveza(idTipoCerveza, tipo, cantidad);
             receta.CalcularIngredientes();
             Assert.AreEqual(600, receta.Ingredientes[EIngredientes.Lupulo]);
             Assert.AreEqual(500, receta.Ingredientes[EIngredientes.Malta]);
@@ -36,10 +36,10 @@ namespace CervezaArtesanalTest
         }
 
         [TestMethod]
-        [DataRow(ETipoCerveza.Kolsh, 2)]
-        public void TestCalcularIngredientesKolsh(ETipoCerveza tipo, int cantidad)
+        [DataRow(2, ETipoCerveza.Kolsh, 2)]
+        public void TestCalcularIngredientesKolsh(int idTipoCerveza, ETipoCerveza tipo, int cantidad)
         {
-            RecetaCerveza receta = new RecetaCerveza(tipo, cantidad);
+            RecetaCerveza receta = new RecetaCerveza(idTipoCerveza, tipo, cantidad);
             receta.CalcularIngredientes();
             Assert.AreEqual(400, receta.Ingredientes[EIngredientes.Lupulo]);
             Assert.AreEqual(400, receta.Ingredientes[EIngredientes.Malta]);

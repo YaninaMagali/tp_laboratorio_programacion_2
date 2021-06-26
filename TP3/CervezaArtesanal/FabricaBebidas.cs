@@ -13,6 +13,11 @@ namespace CervezaArtesanal
         public static List<Cerveza> controlStockCerveza;
         public static List<Ingrediente> stockIngredientes;
 
+        public static Texto<string> archivoLog;
+        public static XML<List<Cerveza>> xmlStockCerveza;
+        public static string path;
+        public static string pathErrorLog;
+
         /// <summary>
         /// Instancio las listas y el diccionario
         /// Carga stock de ingredientes
@@ -27,6 +32,14 @@ namespace CervezaArtesanal
 
             IngredienteDAO ingredientesDAO = new IngredienteDAO();
             stockIngredientes = ingredientesDAO.ConsultarStockIngredientes();
+
+            archivoLog = new Texto<string>();
+            xmlStockCerveza = new XML<List<Cerveza>>();
+            path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/controlStockCerveza.xml";
+            pathErrorLog = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/errorsLog.txt";
+
+
+            controlStockCerveza = xmlStockCerveza.Leer(path);
 
             listaFermentadores.Add(new Fermentador(ETipoCerveza.Kolsh));
             listaFermentadores.Add(new Fermentador(ETipoCerveza.IPA, 30));
@@ -209,10 +222,12 @@ namespace CervezaArtesanal
             bool estaCocinando = false;
             ETipoCerveza tipoCervezaAux;
 
-            Texto<string> archivoLog = new Texto<string>();
-            XML<List<Cerveza>> xmlStockCerveza = new XML<List<Cerveza>>();
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/controlStockCerveza.xml";
-            string pathErrorLog = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/errorsLog.txt";
+            //Texto<string> archivoLog = new Texto<string>();
+            //XML<List<Cerveza>> xmlStockCerveza = new XML<List<Cerveza>>();
+            //string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/controlStockCerveza.xml";
+            //string pathErrorLog = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/errorsLog.txt";
+
+
 
             try
             {

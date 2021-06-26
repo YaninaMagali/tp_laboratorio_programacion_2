@@ -63,6 +63,7 @@ namespace CervezaArtesanalForm
             // 
             // comboTipos
             // 
+            this.comboTipos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTipos.FormattingEnabled = true;
             this.comboTipos.Location = new System.Drawing.Point(21, 97);
             this.comboTipos.Name = "comboTipos";

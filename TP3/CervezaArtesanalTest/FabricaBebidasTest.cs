@@ -28,27 +28,27 @@ namespace CervezaArtesanalTest
             Assert.IsFalse(FabricaBebidas.ValidarStockIngrediente(ingrediente, cantidad));
         }
 
-        [TestMethod]
-        public void TestCalcularStockRestante()
-        {
-            float auxLupulo = 0;
-            float auxMalta = 0;
-            float auxAgua = 0;
+        //[TestMethod]
+        //public void TestCalcularStockRestante()
+        //{
+        //    float auxLupulo = 0;
+        //    float auxMalta = 0;
+        //    float auxAgua = 0;
 
-            RecetaCerveza auxReceta = new RecetaCerveza(ETipoCerveza.IPA, 1);
-            auxReceta.CalcularIngredientes();
+        //    RecetaCerveza auxReceta = new RecetaCerveza(ETipoCerveza.IPA, 1);
+        //    auxReceta.CalcularIngredientes();
 
-            auxLupulo = FabricaBebidas.stockIngredientes[EIngredientes.Lupulo] - auxReceta.ingredientes[EIngredientes.Lupulo];
-            auxMalta = FabricaBebidas.stockIngredientes[EIngredientes.Malta] - auxReceta.ingredientes[EIngredientes.Malta];
-            auxAgua = FabricaBebidas.stockIngredientes[EIngredientes.Agua] - auxReceta.ingredientes[EIngredientes.Agua];
+        //    auxLupulo = FabricaBebidas.stockIngredientes[EIngredientes.Lupulo] - auxReceta.ingredientes[EIngredientes.Lupulo];
+        //    auxMalta = FabricaBebidas.stockIngredientes[EIngredientes.Malta] - auxReceta.ingredientes[EIngredientes.Malta];
+        //    auxAgua = FabricaBebidas.stockIngredientes[EIngredientes.Agua] - auxReceta.ingredientes[EIngredientes.Agua];
             
-            FabricaBebidas.CalcularIngredientesRestantes(auxReceta);
+        //    FabricaBebidas.CalcularIngredientesRestantes(auxReceta);
 
-            Assert.AreEqual(auxLupulo, FabricaBebidas.StockIngredientes[EIngredientes.Lupulo]);
-            Assert.AreEqual(auxMalta, FabricaBebidas.StockIngredientes[EIngredientes.Malta]);
-            Assert.AreEqual(auxAgua, FabricaBebidas.StockIngredientes[EIngredientes.Agua]);
+        //    Assert.AreEqual(auxLupulo, FabricaBebidas.StockIngredientes[EIngredientes.Lupulo]);
+        //    Assert.AreEqual(auxMalta, FabricaBebidas.StockIngredientes[EIngredientes.Malta]);
+        //    Assert.AreEqual(auxAgua, FabricaBebidas.StockIngredientes[EIngredientes.Agua]);
 
-        }
+        //}
     }
 }
 

@@ -25,5 +25,26 @@ namespace CervezaArtesanal
                 serializador.Serialize(escritor, dato);
             }
         }
+
+        /// <summary>
+        /// Deserializa xml que recupera del path recibido como param
+        /// </summary>
+        /// <param name="path">ruta del archivo a deserializar</param>
+        /// <returns>Devuelve un objeto de tipo generico deserializado </returns>
+        public T Leer(string path)
+        {
+            T dato;
+
+            using (XmlTextReader lector = new XmlTextReader(path))
+            {
+                XmlSerializer serializador = new XmlSerializer(typeof(T));
+
+                dato = (T)serializador.Deserialize(lector);
+            }
+
+            return dato;
+                
+        }
+
     }
 }
