@@ -33,15 +33,16 @@ namespace CervezaArtesanal
         /// <returns>Devuelve un objeto de tipo generico deserializado </returns>
         public T Leer(string path)
         {
-            T dato;
+            T dato = default;
 
-            using (XmlTextReader lector = new XmlTextReader(path))
+            if(File.Exists(path))
             {
-                XmlSerializer serializador = new XmlSerializer(typeof(T));
-
-                dato = (T)serializador.Deserialize(lector);
+                using (XmlTextReader lector = new XmlTextReader(path))
+                {
+                    XmlSerializer serializador = new XmlSerializer(typeof(T));
+                    dato = (T)serializador.Deserialize(lector);
+                }
             }
-
             return dato;
                 
         }

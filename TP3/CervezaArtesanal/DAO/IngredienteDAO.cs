@@ -59,50 +59,6 @@ namespace CervezaArtesanal.DAO
             return ingredientes;
         }
 
-        /// <summary>
-        /// Consulta ingredientes y cantidad necesaria por litro de acuerdo al id del tipo de cerveza recibido
-        /// </summary>
-        /// <param name="idTipoCerveza">id del tipo de cerveza cuyos ingredientes y cantidades se quieren cosnsultar</param>
-        /// <returns>Devuelve un diccionario con los ingredientes y cantidad necesaria por litro</returns>
-        public Dictionary<EIngredientes, float> ConsultarIngredientesPorIdTipoCerveza(int idTipoCerveza)
-        {
-            Dictionary<EIngredientes, float> ingredientesNecesarios = new Dictionary<EIngredientes, float>();
-
-            comando.CommandText = "SELECT Ingredientes.nombreIngrediente, IngredientesPorReceta.cantidadNecesaria " +
-                "FROM Recetas " +
-                "INNER JOIN IngredientesPorReceta on IngredientesPorReceta.idReceta = Recetas.idReceta " +
-                "INNER JOIN Ingredientes ON Ingredientes.idIngrediente = IngredientesPorReceta.IdIngrediente " +
-                "WHERE Recetas.idReceta = @id ";
-
-            comando.Parameters.AddWithValue("@id", idTipoCerveza);
-
-            try
-            {
-                this.conexion.AbrirConexion();
-                SqlDataReader reader = this.comando.ExecuteReader();
-                while (reader.Read())
-                {
-                    float cantidadNecesaria;
-                    float.TryParse(reader["cantidadNecesaria"].ToString(), out cantidadNecesaria);
-                    EIngredientes ingrediente;
-                    Enum.TryParse<EIngredientes>(reader["nombreIngrediente"].ToString(), out ingrediente);
-
-                    ingredientesNecesarios.Add(ingrediente, cantidadNecesaria);
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                conexion.CerrarConexion();
-                comando.Parameters.Clear();
-            }
-            return ingredientesNecesarios;
-        }
-
-
         public List<Ingrediente> ConsultarIngredientesPorIdTipoCerveza2(int idTipoCerveza)
         {
             List<Ingrediente> ingredientesNecesarios = new List<Ingrediente>();
@@ -145,5 +101,36 @@ namespace CervezaArtesanal.DAO
         }
 
 
+        public void ActualizarStockIngredientes(List<Ingrediente> ingredientes)
+        {
+
+            comando.CommandText = "UPDATE Ingredientes SET stockIngrediente = @stockIngrediente " +
+                "WHERE idIngrediente = @idIngrediente;";
+
+            
+
+            try
+            {
+                this.conexion.AbrirConexion();
+
+                foreach (Ingrediente ingrediente in ingredientes)
+                {
+                    comando.Parameters.AddWithValue("@idIngrediente", ingrediente.idIngrediente);
+                    comando.Parameters.AddWithValue("@stockIngrediente", ingrediente.Stock);
+                    this.comando.ExecuteNonQuery();
+                    comando.Parameters.Clear();
+                }
+                
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conexion.CerrarConexion();
+                comando.Parameters.Clear();
+            }
+        }
     }
 }

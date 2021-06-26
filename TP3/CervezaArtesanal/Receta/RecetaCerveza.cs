@@ -7,7 +7,7 @@ namespace CervezaArtesanal
     {
         public int idTipoCerveza;
         public ETipoCerveza tipoCerveza;
-        public float litrosAPreparar;
+        private float litrosAPreparar;
 
         public RecetaCerveza() : base() { }
 

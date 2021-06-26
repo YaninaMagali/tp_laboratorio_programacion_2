@@ -20,7 +20,21 @@ namespace CervezaArtesanal
             this.stock = stock;
         }
 
-
+        public float Stock
+        {
+            get { return this.stock; }
+            set
+            {
+                if (value >= 0)
+                {
+                    this.stock = value;
+                }
+                else
+                {
+                    this.stock = 0;
+                }
+            }    
+        }
 
 
     }
