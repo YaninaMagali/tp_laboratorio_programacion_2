@@ -7,8 +7,12 @@ using System.Threading.Tasks;
 
 namespace CervezaArtesanal
 {
+    public delegate void miDelegado();
     public static class FabricaBebidas
     {
+        public static event miDelegado PuedeEmpezarACocinarEvento;
+
+        public static string nombreFabrica;
         public static List<Fermentador> listaFermentadores;
         public static List<Cerveza> controlStockCerveza;
         public static List<Ingrediente> stockIngredientes;
@@ -27,6 +31,8 @@ namespace CervezaArtesanal
         /// 
         static FabricaBebidas()
         {
+            PuedeEmpezarACocinarEvento += ActualizarBaseDatosConNuevoStockIngredientes;
+            PuedeEmpezarACocinarEvento += ActualizarXMLConStockCervezasEnCocina;
 
             archivoLogErrores = new Texto<string>();
             xmlStockCerveza = new XML<List<Cerveza>>();
@@ -113,22 +119,7 @@ namespace CervezaArtesanal
         {
             foreach (Ingrediente ingredienteARestarStock in receta.ingredientes)
             {
-                CalcularStockRestantePorIngrediente(ingredienteARestarStock);
-            }
-        }
-
-        /// <summary>
-        /// Resta del stock de un ingrediente la cantidad que se va a usar para cocinar
-        /// </summary>
-        /// <param name="ingredienteARestarStock"></param>
-        public static void CalcularStockRestantePorIngrediente(Ingrediente ingredienteARestarStock)
-        {
-            foreach (Ingrediente i in FabricaBebidas.stockIngredientes)
-            {
-                if (i.idIngrediente == ingredienteARestarStock.idIngrediente)
-                {
-                    i.Stock = i.Stock - ingredienteARestarStock.Stock;
-                }
+                ingredienteARestarStock.RestarStock(ingredienteARestarStock, FabricaBebidas.StockIngredientes);
             }
         }
 
@@ -165,52 +156,81 @@ namespace CervezaArtesanal
         /// <returns>Devuelve true si puede empezar a cocinar la cerveza, false caso contrario</returns>
         public static bool Cocinar(int idTipoCerveza, string tipoReceta, float litros)
         {
-            
             bool estaCocinando = false;
             ETipoCerveza tipoCervezaAux;
+            Cerveza cerveza;
+            RecetaCerveza receta = null;
+            Fermentador fermentadorDisponible = null;
+
 
             try
             {
-                Enum.TryParse<ETipoCerveza>(tipoReceta, out tipoCervezaAux);
-                RecetaCerveza receta = new RecetaCerveza(idTipoCerveza, tipoCervezaAux, litros);
-                receta.CalcularIngredientes();
-                Cerveza cerveza;
-                Fermentador fermentador = BuscarFermentadorDisponible(receta);
+                if(Enum.TryParse<ETipoCerveza>(tipoReceta, out tipoCervezaAux))
+                {
+                    receta = new RecetaCerveza(idTipoCerveza, tipoCervezaAux, litros);
+                    receta.CalcularIngredientes();
+                    fermentadorDisponible = BuscarFermentadorDisponible(receta);
+                }
 
-                if (fermentador != null && 
-                    ValidarStockListaIngredientes(receta)
+                if (receta != null
+                    && fermentadorDisponible != null
+                    && ValidarStockListaIngredientes(receta)
                     )
                 {
                     if (tipoCervezaAux is ETipoCerveza.IPA)
                     {
                         cerveza = new CervezaIPA(receta);
                         controlStockCerveza.Add(cerveza);
+
                     }
                     else if (tipoCervezaAux is ETipoCerveza.Kolsh)
                     {
                         cerveza = new CervezaKolsh(receta);
                         controlStockCerveza.Add(cerveza);
                     }
+
                     CalcularStockRestanteIngredientes(receta);
-                    IngredienteDAO ingredientesDAO = new IngredienteDAO();
-                    ingredientesDAO.ActualizarStockIngredientes(FabricaBebidas.stockIngredientes);
-                    fermentador.CapacidadLitros = receta.LitrosAPreparar;
+                    fermentadorDisponible.CapacidadLitros = receta.LitrosAPreparar;
+
+                    PuedeEmpezarACocinarEvento?.Invoke();
                     estaCocinando = true;
-                    xmlStockCerveza.Guardar(pathControlStockCerveza, FabricaBebidas.controlStockCerveza);
+                    
                 }
             }
             catch (LitrosAPrepararExcepcion ex)
             {
-                archivoLogErrores.Guardar(pathLogErrores, new Error(ex).ToString());
+                LoguearError(pathLogErrores, ex);
             }
             catch (NullReferenceException ex)
             {
-                archivoLogErrores.Guardar(pathLogErrores, new Error(ex).ToString());
+                LoguearError(pathLogErrores, ex);
             }
             return estaCocinando;
         }
 
-
-
+        /// <summary>
+        /// Loguea el error en el path recibido por param
+        /// </summary>
+        /// <param name="path">ruta del archivo</param>
+        /// <param name="ex">excepcion con la que se va crear el error a loguear</param>
+        static void LoguearError(string path, Exception ex)
+        {
+            archivoLogErrores.Guardar(pathLogErrores, new Error(ex).ToString());
         }
+
+        /// <summary>
+        /// Actualiza la base con el nuevo stock de ingredientes
+        /// </summary>
+        static void ActualizarBaseDatosConNuevoStockIngredientes()
+        {
+            IngredienteDAO i = new IngredienteDAO();
+            i.ActualizarStockIngredientes(FabricaBebidas.stockIngredientes);
+        }
+
+        static void ActualizarXMLConStockCervezasEnCocina()
+        {
+            xmlStockCerveza.Guardar(pathControlStockCerveza, FabricaBebidas.controlStockCerveza);
+        }
+
+    }
 }

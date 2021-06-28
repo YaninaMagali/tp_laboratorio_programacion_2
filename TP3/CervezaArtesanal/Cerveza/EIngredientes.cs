@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace CervezaArtesanal
 {
-    public enum EIngredientes { Agua, Lupulo, Malta, Uva }
+    public enum EIngredientes { Agua, Lupulo, Malta, Uva, Miel }
 }

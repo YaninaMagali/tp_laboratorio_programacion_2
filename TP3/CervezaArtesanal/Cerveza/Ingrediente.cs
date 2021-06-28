@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CervezaArtesanal.DAO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,6 +36,32 @@ namespace CervezaArtesanal
                 }
             }    
         }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"{this.ingredienteTipo.ToString()}: {this.Stock.ToString()} gramos ");
+            return sb.ToString();
+        }
+
+        public void RestarStock(Ingrediente ingredienteARestarStock, List<Ingrediente> ingredientesActuales)
+        {
+            foreach (Ingrediente i in ingredientesActuales)
+            {
+                if (i.idIngrediente == ingredienteARestarStock.idIngrediente)
+                {
+                    i.Stock = i.Stock - ingredienteARestarStock.Stock;
+                    break;
+                }
+            }
+        }
+
+
+        //public void ActualizarStockBaseDatos(List<Ingrediente> ingredientes)
+        //{
+        //    IngredienteDAO ingredientesDAO = new IngredienteDAO();
+        //    ingredientesDAO.ActualizarStockIngredientes(ingredientes);
+        //}
 
 
     }
