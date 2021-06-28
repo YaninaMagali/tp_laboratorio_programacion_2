@@ -25,41 +25,16 @@ namespace CervezaArtesanalForm
             RecetaDAO dao = new RecetaDAO();
             recetas = dao.ConsultarRecetas();
             comboTipos.DataSource = recetas.Keys.ToList<string>();
+
+            FabricaBebidas.PuedeEmpezarACocinarEvento += FabricaBebidas_PuedeEmpezarACocinarEvento;
         }
-
-        //private void btCocinar_Click(object sender, EventArgs e)
-        //{
-        //    ETipoCerveza tipoAux;
-        //    float cantidadLitrosAux;
-
-
-        //    if (float.TryParse(txtCantidadLitros.Text, out cantidadLitrosAux) &&
-        //        Enum.TryParse<ETipoCerveza>(comboTipos.SelectedValue.ToString(), out tipoAux))
-        //    {
-        //        if (FabricaBebidas.Cocinar(tipoAux, cantidadLitrosAux))
-        //        { MessageBox.Show("COCINANDO", "Iuju!", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-        //        else
-        //        {
-        //            MessageBox.Show("NO HAY FERMENTADORES o STOCK DE INGREDIENTES",
-        //            "Error!",
-        //            MessageBoxButtons.OK,
-        //            MessageBoxIcon.Error);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("REVISAR FORMATO AL INGRESAR LOS LITROS A PREPARAR",
-        //            "Error!",
-        //            MessageBoxButtons.OK,
-        //            MessageBoxIcon.Warning);
-        //    }
-        //}
-
 
         private void btCocinar_Click(object sender, EventArgs e)
         {
             float cantidadLitrosAux;
             int idReceta;
+
+            
 
             if (float.TryParse(txtCantidadLitros.Text, out cantidadLitrosAux
                 )
@@ -84,8 +59,26 @@ namespace CervezaArtesanalForm
                     MessageBoxIcon.Warning);
             }
         }
+
+        private void FabricaBebidas_PuedeEmpezarACocinarEvento()
+        {
+            CargarListaStock();
+        }
+
         private void CervezaArtesanalForm_Load(object sender, EventArgs e)
         {
+            CargarListaStock();
+        }
+
+        private void CargarListaStock()
+        {
+            FabricaBebidas.StockIngredientes.ToString();
+            txtboxStockIngredientes.Text = "";
+
+            foreach (Ingrediente item in FabricaBebidas.StockIngredientes)
+            {
+                txtboxStockIngredientes.Text += item.ToString() + " \n";
+            }
 
         }
 
@@ -98,6 +91,12 @@ namespace CervezaArtesanalForm
             {
                 e.Cancel = true;
             }
+        }
+
+        private void btnAgregarStock_Click(object sender, EventArgs e)
+        {
+            Form agregarStockForm = new CargarStockForm();
+            agregarStockForm.ShowDialog();
         }
     }
 }

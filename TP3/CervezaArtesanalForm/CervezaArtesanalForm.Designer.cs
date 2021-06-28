@@ -34,11 +34,14 @@ namespace CervezaArtesanalForm
             this.label1 = new System.Windows.Forms.Label();
             this.comboTipos = new System.Windows.Forms.ComboBox();
             this.btCocinar = new System.Windows.Forms.Button();
+            this.txtboxStockIngredientes = new System.Windows.Forms.RichTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnAgregarStock = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtCantidadLitros
             // 
-            this.txtCantidadLitros.Location = new System.Drawing.Point(18, 33);
+            this.txtCantidadLitros.Location = new System.Drawing.Point(193, 33);
             this.txtCantidadLitros.Name = "txtCantidadLitros";
             this.txtCantidadLitros.Size = new System.Drawing.Size(124, 20);
             this.txtCantidadLitros.TabIndex = 0;
@@ -46,7 +49,7 @@ namespace CervezaArtesanalForm
             // lblCantidadLitros
             // 
             this.lblCantidadLitros.AutoSize = true;
-            this.lblCantidadLitros.Location = new System.Drawing.Point(21, 13);
+            this.lblCantidadLitros.Location = new System.Drawing.Point(196, 13);
             this.lblCantidadLitros.Name = "lblCantidadLitros";
             this.lblCantidadLitros.Size = new System.Drawing.Size(92, 13);
             this.lblCantidadLitros.TabIndex = 1;
@@ -55,7 +58,7 @@ namespace CervezaArtesanalForm
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 70);
+            this.label1.Location = new System.Drawing.Point(194, 70);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 13);
             this.label1.TabIndex = 3;
@@ -65,14 +68,14 @@ namespace CervezaArtesanalForm
             // 
             this.comboTipos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTipos.FormattingEnabled = true;
-            this.comboTipos.Location = new System.Drawing.Point(21, 97);
+            this.comboTipos.Location = new System.Drawing.Point(196, 91);
             this.comboTipos.Name = "comboTipos";
             this.comboTipos.Size = new System.Drawing.Size(121, 21);
             this.comboTipos.TabIndex = 4;
             // 
             // btCocinar
             // 
-            this.btCocinar.Location = new System.Drawing.Point(18, 147);
+            this.btCocinar.Location = new System.Drawing.Point(193, 138);
             this.btCocinar.Name = "btCocinar";
             this.btCocinar.Size = new System.Drawing.Size(124, 30);
             this.btCocinar.TabIndex = 5;
@@ -80,11 +83,41 @@ namespace CervezaArtesanalForm
             this.btCocinar.UseVisualStyleBackColor = true;
             this.btCocinar.Click += new System.EventHandler(this.btCocinar_Click);
             // 
+            // txtboxStockIngredientes
+            // 
+            this.txtboxStockIngredientes.Location = new System.Drawing.Point(12, 33);
+            this.txtboxStockIngredientes.Name = "txtboxStockIngredientes";
+            this.txtboxStockIngredientes.Size = new System.Drawing.Size(159, 214);
+            this.txtboxStockIngredientes.TabIndex = 6;
+            this.txtboxStockIngredientes.Text = "";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Stock Ingredientes";
+            // 
+            // btnAgregarStock
+            // 
+            this.btnAgregarStock.Location = new System.Drawing.Point(15, 253);
+            this.btnAgregarStock.Name = "btnAgregarStock";
+            this.btnAgregarStock.Size = new System.Drawing.Size(156, 34);
+            this.btnAgregarStock.TabIndex = 8;
+            this.btnAgregarStock.Text = "AGREGAR STOCK";
+            this.btnAgregarStock.UseVisualStyleBackColor = true;
+            this.btnAgregarStock.Click += new System.EventHandler(this.btnAgregarStock_Click);
+            // 
             // CervezaArtesanalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(167, 225);
+            this.ClientSize = new System.Drawing.Size(486, 305);
+            this.Controls.Add(this.btnAgregarStock);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtboxStockIngredientes);
             this.Controls.Add(this.btCocinar);
             this.Controls.Add(this.comboTipos);
             this.Controls.Add(this.label1);
@@ -109,6 +142,9 @@ namespace CervezaArtesanalForm
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboTipos;
         private System.Windows.Forms.Button btCocinar;
+        private System.Windows.Forms.RichTextBox txtboxStockIngredientes;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnAgregarStock;
     }
 }
 

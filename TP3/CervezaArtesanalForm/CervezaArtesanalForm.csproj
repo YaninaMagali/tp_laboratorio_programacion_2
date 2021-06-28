@@ -68,8 +68,17 @@
     <Compile Include="CervezaArtesanalForm.Designer.cs">
       <DependentUpon>CervezaArtesanalForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CargarStockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CargarStockForm.Designer.cs">
+      <DependentUpon>CargarStockForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CargarStockForm.resx">
+      <DependentUpon>CargarStockForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CervezaArtesanalForm.resx">
       <DependentUpon>CervezaArtesanalForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,6 +92,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Properties\DataSources\CervezaArtesanal.DAO.IngredienteDAO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
