@@ -11,7 +11,9 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            if (FabricaBebidas.Cocinar(1, "IPA", 5))
+
+            Cocina cocina = new Cocina();
+            if (cocina.Cocinar(1, "IPA", 5))
             { Console.WriteLine("Empezo A Cocinar "); }
             else { Console.WriteLine("NO COCINA"); }
 
@@ -21,7 +23,7 @@ namespace Test
                 Console.WriteLine("Pudo crear receta");
             }
 
-            if (FabricaBebidas.ValidarStockIngrediente(4,100))
+            if (cocina.ValidarStockIngrediente(4,100))
             {
                 Console.WriteLine("Hay stock ingredientes ");
             }

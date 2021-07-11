@@ -12,3 +12,4 @@ C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\
 C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanalForm\bin\Debug\CervezaArtesanal.pdb
 C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanalForm\obj\Debug\CervezaArtesanalForm.csproj.CopyComplete
 C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanalForm\obj\Debug\CervezaArtesanalForm.EmbotelladoraForm.resources
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanalForm\obj\Debug\CervezaArtesanalForm.CocinaForm.resources

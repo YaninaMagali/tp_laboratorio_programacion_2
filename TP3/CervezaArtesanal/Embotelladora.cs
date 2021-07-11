@@ -67,11 +67,10 @@ namespace CervezaArtesanal
                 {
                     Botella.ActualizarBotellasDisponibles(this.botellasDisponibles, litrosAEmbotellar);
                     auxControlStockCerveza.Remove(auxControlStockCerveza.First());
-                    FabricaBebidas.ActualizarXMLConStockCervezasEnCocina();
+                    Cocina.ActualizarXMLConStockCervezasEnCocina();
                     EmbotellandoEvento?.Invoke();
                 }
             }
-            //return controlStockCerveza;
         }
 
         /// <summary>

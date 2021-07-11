@@ -12,17 +12,18 @@ namespace CervezaArtesanalTest
         [DataRow(1)]
         public void TestValidarStockIngredienteTrue(int idIngrediente)
         {
-            float stockLupulo = FabricaBebidas.StockIngredientes[0].Stock;
-            Assert.IsTrue(FabricaBebidas.ValidarStockIngrediente(idIngrediente, stockLupulo));
-            Assert.IsTrue(FabricaBebidas.ValidarStockIngrediente(idIngrediente, stockLupulo-1));
+            float stockLupulo = FabricaBebidas.Cocina.StockIngredientes[0].Stock;
+            Assert.IsTrue(FabricaBebidas.Cocina.ValidarStockIngrediente(idIngrediente, stockLupulo));
+            Assert.IsTrue(FabricaBebidas.Cocina.ValidarStockIngrediente(idIngrediente, stockLupulo-1));
         }
 
         [TestMethod]
         [DataRow(1)]
         public void TestValidarStockIngredienteFalse(int idIngrediente)
         {
-            float i = FabricaBebidas.StockIngredientes[0].Stock;
-            Assert.IsFalse(FabricaBebidas.ValidarStockIngrediente(idIngrediente, i + 1));
+            Cocina cocina = new Cocina();
+            float i = cocina.StockIngredientes[0].Stock;
+            Assert.IsFalse(cocina.ValidarStockIngrediente(idIngrediente, i + 1));
         }
 
         //[TestMethod]

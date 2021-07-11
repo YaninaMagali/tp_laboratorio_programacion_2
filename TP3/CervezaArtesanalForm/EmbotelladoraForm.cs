@@ -22,6 +22,9 @@ namespace CervezaArtesanalForm
             Embotelladora.EmbotellandoEvento += Embotelladora_EmbotellandoEvento;
         }
 
+        /// <summary>
+        /// Se invoca al momemento en que se dispara el EmbotellandoEvento, a fin de actualizar los datos del form
+        /// </summary>
         private void Embotelladora_EmbotellandoEvento()
         {
             if (this.InvokeRequired)
@@ -33,8 +36,8 @@ namespace CervezaArtesanalForm
             {
                 txtBoxStockCerveza.Text = "";
                 lblCapacidadTotalBotellas.Text = "";
-                CargarStockCerveza(controlStockCerveza);
-                lblCapacidadTotalBotellas.Text = Botella.CapacidadTotalBotellas(FabricaBebidas.embotelladora.BotellasDisponiblesActualizadas).ToString();
+                StockCervezaLoad(controlStockCerveza);
+                lblCapacidadTotalBotellas.Text = Botella.CapacidadTotalBotellas(FabricaBebidas.Embotelladora.BotellasDisponiblesActualizadas).ToString();
             }
                 
         }
@@ -44,7 +47,11 @@ namespace CervezaArtesanalForm
 
         }
 
-        public void CargarStockCerveza(List<Cerveza> controlStockCerveza)
+        /// <summary>
+        /// Muestra el stock de cervezas para embotellar en el form
+        /// </summary>
+        /// <param name="controlStockCerveza"></param>
+        public void StockCervezaLoad(List<Cerveza> controlStockCerveza)
         {
             foreach (Cerveza item in FabricaBebidas.ControlStockCerveza)
             {
@@ -54,16 +61,25 @@ namespace CervezaArtesanalForm
             }
         }
 
+        /// <summary>
+        /// Invoca el metodo que inicia el hilo secundario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnIniciarEmbotellado_Click(object sender, EventArgs e)
         {
-            FabricaBebidas.embotelladora.IniciarHilo();
-            //FabricaBebidas.embotelladora.EmbotellarCerveza(controlStockCerveza);
+            FabricaBebidas.Embotelladora.IniciarHilo();
         }
 
+        /// <summary>
+        /// Al cargar el form se invoca el metodo que carga stock de cerveza a embotellar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EmbotelladoraLoad(object sender, EventArgs e)
         {
-            CargarStockCerveza(controlStockCerveza);
-            lblCapacidadTotalBotellas.Text =  Botella.CapacidadTotalBotellas(FabricaBebidas.embotelladora.botellasDisponibles).ToString();
+            StockCervezaLoad(controlStockCerveza);
+            lblCapacidadTotalBotellas.Text =  Botella.CapacidadTotalBotellas(FabricaBebidas.Embotelladora.botellasDisponibles).ToString();
 
         }
     }

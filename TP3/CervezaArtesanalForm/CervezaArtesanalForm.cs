@@ -14,6 +14,7 @@ namespace CervezaArtesanalForm
 {
     public partial class CervezaArtesanalForm : Form
     {
+        
         Dictionary<string, int> recetas;
         EmbotelladoraForm embotelladoraFrm;
 
@@ -27,7 +28,7 @@ namespace CervezaArtesanalForm
             recetas = dao.ConsultarRecetas();
             comboTipos.DataSource = recetas.Keys.ToList<string>();
 
-            FabricaBebidas.PuedeEmpezarACocinarEvento += FabricaBebidas_PuedeEmpezarACocinarEvento;
+            FabricaBebidas.Cocina.PuedeEmpezarACocinarEvento += FabricaBebidas_PuedeEmpezarACocinarEvento;
         }
 
         private void btCocinar_Click(object sender, EventArgs e)
@@ -40,7 +41,7 @@ namespace CervezaArtesanalForm
                 && cantidadLitrosAux > 0
                 && recetas.TryGetValue(comboTipos.SelectedValue.ToString(), out idReceta))
             {
-                if (FabricaBebidas.Cocinar(idReceta, comboTipos.SelectedValue.ToString(), cantidadLitrosAux))
+                if (FabricaBebidas.Cocina.Cocinar(idReceta, comboTipos.SelectedValue.ToString(), cantidadLitrosAux))
                 { MessageBox.Show("COCINANDO", "Iuju!", MessageBoxButtons.OK, MessageBoxIcon.Information); }
                 else
                 {
@@ -71,10 +72,12 @@ namespace CervezaArtesanalForm
 
         private void CargarListaStock()
         {
-            FabricaBebidas.StockIngredientes.ToString();
+            //FabricaBebidas.cocina.StockIngredientes.ToString();
+            //Cocina.StockIngredientes.ToString();
+            //FabricaBebidas.Cocina.StockIngredientes;
             txtboxStockIngredientes.Text = "";
 
-            foreach (Ingrediente item in FabricaBebidas.StockIngredientes)
+            foreach (Ingrediente item in FabricaBebidas.Cocina.StockIngredientes)
             {
                 txtboxStockIngredientes.Text += item.ToString() + " \n";
             }

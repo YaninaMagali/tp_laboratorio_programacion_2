@@ -102,7 +102,7 @@ namespace CervezaArtesanalForm
             // 
             // btnEmbotellar
             // 
-            this.btnEmbotellar.Location = new System.Drawing.Point(343, 213);
+            this.btnEmbotellar.Location = new System.Drawing.Point(355, 136);
             this.btnEmbotellar.Name = "btnEmbotellar";
             this.btnEmbotellar.Size = new System.Drawing.Size(124, 34);
             this.btnEmbotellar.TabIndex = 8;
@@ -114,7 +114,7 @@ namespace CervezaArtesanalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(495, 305);
+            this.ClientSize = new System.Drawing.Size(503, 297);
             this.Controls.Add(this.btnEmbotellar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtboxStockIngredientes);
