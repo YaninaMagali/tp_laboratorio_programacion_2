@@ -38,10 +38,12 @@ namespace CervezaArtesanal
 
             archivoLogErrores = new Texto<string>();
             xmlStockCerveza = new XML<List<Cerveza>>();
-            pathControlStockCerveza = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/controlStockCerveza.xml";
-            pathLogErrores = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/errorsLog.txt";
 
-            CargarControlStockCerveza();
+
+            pathControlStockCerveza = AppDomain.CurrentDomain.BaseDirectory + "controlStockCerveza.xml";
+            pathLogErrores = AppDomain.CurrentDomain.BaseDirectory + "errorsLog.txt";
+
+            CargarControlStockCerveza(pathControlStockCerveza);
 
             stockIngredientes = new List<Ingrediente>();
             IngredienteDAO ingredientesDAO = new IngredienteDAO();
@@ -236,7 +238,7 @@ namespace CervezaArtesanal
         }
 
 
-        public static void CargarControlStockCerveza()
+        public static void CargarControlStockCerveza(string pathControlStockCerveza)
         {
             controlStockCerveza = new List<Cerveza>();
             controlStockCerveza = xmlStockCerveza.Leer(pathControlStockCerveza);

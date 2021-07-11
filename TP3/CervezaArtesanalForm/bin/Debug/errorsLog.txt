@@ -1,0 +1,88 @@
+6/6/2021 20:55:42
+CervezaArtesanal.RecetaExcepcion: Para calcular una receta los litros ingresados deben ser mayor a cero
+   at CervezaArtesanal.Receta.set_LitrosAPreparar(Int32 value) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta.cs:line 37
+   at CervezaArtesanal.Receta..ctor(ETipoCerveza tipoCerveza, Int32 litrosAPreparar) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta.cs:line 19
+   at CervezaArtesanal.FabricaBebidas.Cocinar(ETipoCerveza tipo, Int32 litros) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\FabricaBebidas.cs:line 145
+
+6/6/2021 20:56:45
+CervezaArtesanal.RecetaExcepcion: Para calcular una receta los litros ingresados deben ser mayor a cero
+   at CervezaArtesanal.Receta.set_LitrosAPreparar(Int32 value) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta.cs:line 37
+   at CervezaArtesanal.Receta..ctor(ETipoCerveza tipoCerveza, Int32 litrosAPreparar) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta.cs:line 19
+   at CervezaArtesanal.FabricaBebidas.Cocinar(ETipoCerveza tipo, Int32 litros) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\FabricaBebidas.cs:line 145
+
+12/6/2021 13:39:16
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at CervezaArtesanal.FabricaBebidas.Cocinar(ETipoCerveza tipo, Int32 litros) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\FabricaBebidas.cs:line 164
+
+12/6/2021 16:24:37
+CervezaArtesanal.RecetaExcepcion: Para calcular una receta los litros ingresados deben ser mayor a cero
+   at CervezaArtesanal.RecetaCerveza.set_LitrosAPreparar(Int32 value) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 34
+   at CervezaArtesanal.RecetaCerveza..ctor(ETipoCerveza tipoCerveza, Int32 litrosAPreparar) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 16
+   at CervezaArtesanal.FabricaBebidas.Cocinar(ETipoCerveza tipo, Int32 litros) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\FabricaBebidas.cs:line 115
+
+12/6/2021 17:05:04
+CervezaArtesanal.RecetaExcepcion: Para calcular una receta los litros ingresados deben ser mayor a cero
+   at CervezaArtesanal.RecetaCerveza.set_LitrosAPreparar(Int32 value) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 34
+   at CervezaArtesanal.RecetaCerveza..ctor(ETipoCerveza tipoCerveza, Int32 litrosAPreparar) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 16
+   at CervezaArtesanal.FabricaBebidas.Cocinar(ETipoCerveza tipo, Int32 litros) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\FabricaBebidas.cs:line 116
+
+12/6/2021 18:58:07
+CervezaArtesanal.RecetaExcepcion: Para calcular una receta los litros ingresados deben ser mayor a cero
+   at CervezaArtesanal.RecetaCerveza.set_LitrosAPreparar(Int32 value) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 36
+   at CervezaArtesanal.RecetaCerveza..ctor(ETipoCerveza tipoCerveza, Int32 litrosAPreparar) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 18
+   at CervezaArtesanal.FabricaBebidas.Cocinar(ETipoCerveza tipo, Int32 litros) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\FabricaBebidas.cs:line 119
+
+20/6/2021 20:07:27
+CervezaArtesanal.LitrosAPrepararExcepcion: Para calcular una receta los litros ingresados deben ser mayor a cero
+   at CervezaArtesanal.RecetaCerveza.set_LitrosAPreparar(Single value) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 42
+   at CervezaArtesanal.RecetaCerveza..ctor(ETipoCerveza tipoCerveza, Single litrosAPreparar) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 24
+   at CervezaArtesanal.FabricaBebidas.Cocinar(ETipoCerveza tipo, Single litros) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\FabricaBebidas.cs:line 164
+
+20/6/2021 20:07:38
+CervezaArtesanal.LitrosAPrepararExcepcion: Para calcular una receta los litros ingresados deben ser mayor a cero
+   at CervezaArtesanal.RecetaCerveza.set_LitrosAPreparar(Single value) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 42
+   at CervezaArtesanal.RecetaCerveza..ctor(ETipoCerveza tipoCerveza, Single litrosAPreparar) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 24
+   at CervezaArtesanal.FabricaBebidas.Cocinar(ETipoCerveza tipo, Single litros) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\FabricaBebidas.cs:line 164
+
+20/6/2021 20:08:37
+CervezaArtesanal.LitrosAPrepararExcepcion: Para calcular una receta los litros ingresados deben ser mayor a cero
+   at CervezaArtesanal.RecetaCerveza.set_LitrosAPreparar(Single value) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 42
+   at CervezaArtesanal.RecetaCerveza..ctor(ETipoCerveza tipoCerveza, Single litrosAPreparar) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 24
+   at CervezaArtesanal.FabricaBebidas.Cocinar(ETipoCerveza tipo, Single litros) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\FabricaBebidas.cs:line 164
+
+21/6/2021 20:50:52
+CervezaArtesanal.LitrosAPrepararExcepcion: Para calcular una receta los litros ingresados deben ser mayor a cero
+   at CervezaArtesanal.RecetaCerveza.set_LitrosAPreparar(Single value) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 41
+   at CervezaArtesanal.RecetaCerveza..ctor(Int32 idTipoCerveza, ETipoCerveza tipoCerveza, Single litrosAPreparar) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 22
+   at CervezaArtesanal.FabricaBebidas.Cocinar(Int32 idTipoCerveza, String tipoReceta, Single litros) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\FabricaBebidas.cs:line 226
+
+21/6/2021 20:50:57
+CervezaArtesanal.LitrosAPrepararExcepcion: Para calcular una receta los litros ingresados deben ser mayor a cero
+   at CervezaArtesanal.RecetaCerveza.set_LitrosAPreparar(Single value) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 41
+   at CervezaArtesanal.RecetaCerveza..ctor(Int32 idTipoCerveza, ETipoCerveza tipoCerveza, Single litrosAPreparar) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 22
+   at CervezaArtesanal.FabricaBebidas.Cocinar(Int32 idTipoCerveza, String tipoReceta, Single litros) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\FabricaBebidas.cs:line 226
+
+21/6/2021 20:52:40
+CervezaArtesanal.LitrosAPrepararExcepcion: Para calcular una receta los litros ingresados deben ser mayor a cero
+   at CervezaArtesanal.RecetaCerveza.set_LitrosAPreparar(Single value) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 41
+   at CervezaArtesanal.RecetaCerveza..ctor(Int32 idTipoCerveza, ETipoCerveza tipoCerveza, Single litrosAPreparar) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 22
+   at CervezaArtesanal.FabricaBebidas.Cocinar(Int32 idTipoCerveza, String tipoReceta, Single litros) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\FabricaBebidas.cs:line 226
+
+21/6/2021 20:55:15
+CervezaArtesanal.LitrosAPrepararExcepcion: Para calcular una receta los litros ingresados deben ser mayor a cero
+   at CervezaArtesanal.RecetaCerveza.set_LitrosAPreparar(Single value) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 41
+   at CervezaArtesanal.RecetaCerveza..ctor(Int32 idTipoCerveza, ETipoCerveza tipoCerveza, Single litrosAPreparar) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 22
+   at CervezaArtesanal.FabricaBebidas.Cocinar(Int32 idTipoCerveza, String tipoReceta, Single litros) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\FabricaBebidas.cs:line 226
+
+26/6/2021 16:14:53
+CervezaArtesanal.LitrosAPrepararExcepcion: Para calcular una receta los litros ingresados deben ser mayor a cero
+   at CervezaArtesanal.RecetaCerveza.set_LitrosAPreparar(Single value) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 41
+   at CervezaArtesanal.RecetaCerveza..ctor(Int32 idTipoCerveza, ETipoCerveza tipoCerveza, Single litrosAPreparar) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 22
+   at CervezaArtesanal.FabricaBebidas.Cocinar(Int32 idTipoCerveza, String tipoReceta, Single litros) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\FabricaBebidas.cs:line 228
+
+27/6/2021 17:12:02
+CervezaArtesanal.LitrosAPrepararExcepcion: Para calcular una receta los litros ingresados deben ser mayor a cero
+   at CervezaArtesanal.RecetaCerveza.set_LitrosAPreparar(Single value) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 41
+   at CervezaArtesanal.RecetaCerveza..ctor(Int32 idTipoCerveza, ETipoCerveza tipoCerveza, Single litrosAPreparar) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\Receta\RecetaCerveza.cs:line 22
+   at CervezaArtesanal.FabricaBebidas.Cocinar(Int32 idTipoCerveza, String tipoReceta, Single litros) in C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanal\FabricaBebidas.cs:line 166
+
