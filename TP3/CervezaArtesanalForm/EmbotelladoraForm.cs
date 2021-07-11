@@ -20,6 +20,13 @@ namespace CervezaArtesanalForm
             InitializeComponent();
             this.controlStockCerveza = controlStockCerveza;
             Embotelladora.EmbotellandoEvento += Embotelladora_EmbotellandoEvento;
+            Embotelladora.EmbotellandoEvento += Embotelladora_MostrarMensajeExito; ;
+            FabricaBebidas.Cocina.PuedeEmpezarACocinarEvento += Embotelladora_EmbotellandoEvento;
+        }
+
+        private void Embotelladora_MostrarMensajeExito()
+        {
+            MessageBox.Show("Embasado iniciado");
         }
 
         /// <summary>
