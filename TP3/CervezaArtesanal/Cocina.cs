@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CervezaArtesanal
 {
-    public delegate void miDelegado();
+    public delegate void CocinarDelegado();
     public class Cocina
     {
         //public static List<Ingrediente> stockIngredientes;
@@ -15,7 +15,7 @@ namespace CervezaArtesanal
         //public static event miDelegado PuedeEmpezarACocinarEvento;
         public  List<Ingrediente> stockIngredientes;
         public  List<Fermentador> listaFermentadores;
-        public  event miDelegado PuedeEmpezarACocinarEvento;
+        public  event CocinarDelegado PuedeEmpezarACocinarEvento;
 
         public Cocina()
         {
