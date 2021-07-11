@@ -10,9 +10,6 @@ namespace CervezaArtesanal
     public delegate void CocinarDelegado();
     public class Cocina
     {
-        //public static List<Ingrediente> stockIngredientes;
-        //public static List<Fermentador> listaFermentadores;
-        //public static event miDelegado PuedeEmpezarACocinarEvento;
         public  List<Ingrediente> stockIngredientes;
         public  List<Fermentador> listaFermentadores;
         public  event CocinarDelegado PuedeEmpezarACocinarEvento;
@@ -42,7 +39,6 @@ namespace CervezaArtesanal
         /// <summary>
         /// Propiedad de solo lectura. Devuelve una lista de ingredientes
         /// </summary>
-        //public static List<Ingrediente> StockIngredientes
         public List<Ingrediente> StockIngredientes
         {
             get { return this.stockIngredientes; }
