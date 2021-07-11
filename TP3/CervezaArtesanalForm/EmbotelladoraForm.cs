@@ -24,12 +24,19 @@ namespace CervezaArtesanalForm
 
         private void Embotelladora_EmbotellandoEvento()
         {
-            //FabricaBebidas.CargarControlStockCerveza();
-            txtBoxStockCerveza.Text = "";
-            lblCapacidadTotalBotellas.Text = "";
-            CargarStockCerveza(controlStockCerveza);
-            //lblCapacidadTotalBotellas.Text = Botella.CapacidadTotalBotellas(FabricaBebidas.embotelladora.botellasDisponibles).ToString();
-            lblCapacidadTotalBotellas.Text = Botella.CapacidadTotalBotellas(FabricaBebidas.embotelladora.BotellasDisponiblesActualizadas).ToString();
+            if (this.InvokeRequired)
+            {
+                EmbotelladoraDelegado d = new EmbotelladoraDelegado(this.Embotelladora_EmbotellandoEvento);
+                this.Invoke(d);
+            }
+            else 
+            {
+                txtBoxStockCerveza.Text = "";
+                lblCapacidadTotalBotellas.Text = "";
+                CargarStockCerveza(controlStockCerveza);
+                lblCapacidadTotalBotellas.Text = Botella.CapacidadTotalBotellas(FabricaBebidas.embotelladora.BotellasDisponiblesActualizadas).ToString();
+            }
+                
         }
 
         private void txtBoxStockCerveza_TextChanged(object sender, EventArgs e)
@@ -49,7 +56,8 @@ namespace CervezaArtesanalForm
 
         private void btnIniciarEmbotellado_Click(object sender, EventArgs e)
         {
-            FabricaBebidas.embotelladora.EmbotellarCerveza(controlStockCerveza);
+            FabricaBebidas.embotelladora.IniciarHilo();
+            //FabricaBebidas.embotelladora.EmbotellarCerveza(controlStockCerveza);
         }
 
         private void EmbotelladoraLoad(object sender, EventArgs e)
