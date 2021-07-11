@@ -15,6 +15,7 @@ namespace CervezaArtesanalForm
     public partial class CervezaArtesanalForm : Form
     {
         Dictionary<string, int> recetas;
+        EmbotelladoraForm embotelladoraFrm;
 
         public CervezaArtesanalForm()
         {
@@ -33,8 +34,6 @@ namespace CervezaArtesanalForm
         {
             float cantidadLitrosAux;
             int idReceta;
-
-            
 
             if (float.TryParse(txtCantidadLitros.Text, out cantidadLitrosAux
                 )
@@ -82,7 +81,7 @@ namespace CervezaArtesanalForm
 
         }
 
-        private void CervezaArtesanalForm_(object sender, FormClosingEventArgs e)
+        private void CervezaArtesanalForm_Closing(object sender, FormClosingEventArgs e)
         {
             if(MessageBox.Show("¿Esta seguro que desea salir?", "SALIR ",
             MessageBoxButtons.YesNo,
@@ -93,10 +92,10 @@ namespace CervezaArtesanalForm
             }
         }
 
-        private void btnAgregarStock_Click(object sender, EventArgs e)
+        private void btnEmbotelladora_Click(object sender, EventArgs e)
         {
-            Form agregarStockForm = new CargarStockForm();
-            agregarStockForm.ShowDialog();
+            embotelladoraFrm = new EmbotelladoraForm(FabricaBebidas.ControlStockCerveza);
+            embotelladoraFrm.Show();
         }
     }
 }

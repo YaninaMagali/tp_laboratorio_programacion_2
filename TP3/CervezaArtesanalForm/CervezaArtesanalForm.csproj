@@ -68,19 +68,19 @@
     <Compile Include="CervezaArtesanalForm.Designer.cs">
       <DependentUpon>CervezaArtesanalForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CargarStockForm.cs">
+    <Compile Include="EmbotelladoraForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CargarStockForm.Designer.cs">
-      <DependentUpon>CargarStockForm.cs</DependentUpon>
+    <Compile Include="EmbotelladoraForm.Designer.cs">
+      <DependentUpon>EmbotelladoraForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CargarStockForm.resx">
-      <DependentUpon>CargarStockForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="CervezaArtesanalForm.resx">
       <DependentUpon>CervezaArtesanalForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmbotelladoraForm.resx">
+      <DependentUpon>EmbotelladoraForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

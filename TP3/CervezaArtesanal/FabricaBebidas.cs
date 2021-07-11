@@ -22,6 +22,8 @@ namespace CervezaArtesanal
         public static string pathControlStockCerveza;
         public static string pathLogErrores;
 
+        public static Embotelladora embotelladora;
+
         /// <summary>
         /// Instancio objetos
         /// Carga stock de ingredientes de la base de datos
@@ -39,8 +41,7 @@ namespace CervezaArtesanal
             pathControlStockCerveza = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/controlStockCerveza.xml";
             pathLogErrores = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/errorsLog.txt";
 
-            controlStockCerveza = new List<Cerveza>();
-            controlStockCerveza = xmlStockCerveza.Leer(pathControlStockCerveza);
+            CargarControlStockCerveza();
 
             stockIngredientes = new List<Ingrediente>();
             IngredienteDAO ingredientesDAO = new IngredienteDAO();
@@ -50,6 +51,8 @@ namespace CervezaArtesanal
             listaFermentadores.Add(new Fermentador(ETipoCerveza.Kolsh));
             listaFermentadores.Add(new Fermentador(ETipoCerveza.IPA, 30));
             listaFermentadores.Add(new Fermentador(ETipoCerveza.Kolsh));
+
+            embotelladora = new Embotelladora();
         }
 
         /// <summary>
@@ -75,13 +78,13 @@ namespace CervezaArtesanal
         /// <param name="ingrediente"></param>
         /// <param name="cantidad"></param>
         /// <returns></returns>
-         public static bool ValidarStockIngrediente(int idIngrediente, float cantidad)
+        public static bool ValidarStockIngrediente(int idIngrediente, float cantidad)
         {
             bool hayStock = false;
 
-            foreach(Ingrediente i in FabricaBebidas.StockIngredientes)
+            foreach (Ingrediente i in FabricaBebidas.StockIngredientes)
             {
-                if(idIngrediente == i.idIngrediente && cantidad <= i.stock)
+                if (idIngrediente == i.idIngrediente && cantidad <= i.stock)
                 {
                     hayStock = true;
                     break;
@@ -134,7 +137,7 @@ namespace CervezaArtesanal
 
             foreach (Fermentador fermentador in listaFermentadores)
             {
-                if(fermentador .tipoCerveza == receta.tipoCerveza && 
+                if (fermentador.tipoCerveza == receta.tipoCerveza &&
                     fermentador.CapacidadLitros >= receta.LitrosAPreparar)
                 {
                     fermentadorDisponible = fermentador;
@@ -165,7 +168,7 @@ namespace CervezaArtesanal
 
             try
             {
-                if(Enum.TryParse<ETipoCerveza>(tipoReceta, out tipoCervezaAux))
+                if (Enum.TryParse<ETipoCerveza>(tipoReceta, out tipoCervezaAux))
                 {
                     receta = new RecetaCerveza(idTipoCerveza, tipoCervezaAux, litros);
                     receta.CalcularIngredientes();
@@ -194,7 +197,7 @@ namespace CervezaArtesanal
 
                     PuedeEmpezarACocinarEvento?.Invoke();
                     estaCocinando = true;
-                    
+
                 }
             }
             catch (LitrosAPrepararExcepcion ex)
@@ -227,10 +230,16 @@ namespace CervezaArtesanal
             i.ActualizarStockIngredientes(FabricaBebidas.stockIngredientes);
         }
 
-        static void ActualizarXMLConStockCervezasEnCocina()
+        public static void ActualizarXMLConStockCervezasEnCocina()
         {
             xmlStockCerveza.Guardar(pathControlStockCerveza, FabricaBebidas.controlStockCerveza);
         }
 
+
+        public static void CargarControlStockCerveza()
+        {
+            controlStockCerveza = new List<Cerveza>();
+            controlStockCerveza = xmlStockCerveza.Leer(pathControlStockCerveza);
+        }
     }
 }

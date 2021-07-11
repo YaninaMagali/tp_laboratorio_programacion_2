@@ -36,7 +36,7 @@ namespace CervezaArtesanalForm
             this.btCocinar = new System.Windows.Forms.Button();
             this.txtboxStockIngredientes = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnAgregarStock = new System.Windows.Forms.Button();
+            this.btnEmbotellar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtCantidadLitros
@@ -100,22 +100,22 @@ namespace CervezaArtesanalForm
             this.label2.TabIndex = 7;
             this.label2.Text = "Stock Ingredientes";
             // 
-            // btnAgregarStock
+            // btnEmbotellar
             // 
-            this.btnAgregarStock.Location = new System.Drawing.Point(15, 253);
-            this.btnAgregarStock.Name = "btnAgregarStock";
-            this.btnAgregarStock.Size = new System.Drawing.Size(156, 34);
-            this.btnAgregarStock.TabIndex = 8;
-            this.btnAgregarStock.Text = "AGREGAR STOCK";
-            this.btnAgregarStock.UseVisualStyleBackColor = true;
-            this.btnAgregarStock.Click += new System.EventHandler(this.btnAgregarStock_Click);
+            this.btnEmbotellar.Location = new System.Drawing.Point(343, 213);
+            this.btnEmbotellar.Name = "btnEmbotellar";
+            this.btnEmbotellar.Size = new System.Drawing.Size(124, 34);
+            this.btnEmbotellar.TabIndex = 8;
+            this.btnEmbotellar.Text = "EMBOTELLAR";
+            this.btnEmbotellar.UseVisualStyleBackColor = true;
+            this.btnEmbotellar.Click += new System.EventHandler(this.btnEmbotelladora_Click);
             // 
             // CervezaArtesanalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(486, 305);
-            this.Controls.Add(this.btnAgregarStock);
+            this.ClientSize = new System.Drawing.Size(495, 305);
+            this.Controls.Add(this.btnEmbotellar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtboxStockIngredientes);
             this.Controls.Add(this.btCocinar);
@@ -128,7 +128,7 @@ namespace CervezaArtesanalForm
             this.Name = "CervezaArtesanalForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CerveceriaArtesanal";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CervezaArtesanalForm_);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CervezaArtesanalForm_Closing);
             this.Load += new System.EventHandler(this.CervezaArtesanalForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -144,7 +144,7 @@ namespace CervezaArtesanalForm
         private System.Windows.Forms.Button btCocinar;
         private System.Windows.Forms.RichTextBox txtboxStockIngredientes;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnAgregarStock;
+        private System.Windows.Forms.Button btnEmbotellar;
     }
 }
 

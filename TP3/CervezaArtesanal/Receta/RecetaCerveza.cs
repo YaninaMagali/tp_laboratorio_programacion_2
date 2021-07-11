@@ -1,5 +1,6 @@
 ﻿using CervezaArtesanal.DAO;
 using System.Collections.Generic;
+using System.Text;
 
 namespace CervezaArtesanal
 {
@@ -57,6 +58,15 @@ namespace CervezaArtesanal
             {
                 base.ingredientes.Add(new Ingrediente(i.idIngrediente, i.ingredienteTipo, (i.stock * this.litrosAPreparar)));
             }
+        }
+
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(base.ToString());
+            sb.AppendLine($"Litros: {LitrosAPreparar}");
+            return sb.ToString();
         }
 
     }

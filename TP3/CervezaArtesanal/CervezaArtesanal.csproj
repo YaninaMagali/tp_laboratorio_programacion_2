@@ -46,14 +46,17 @@
     <Compile Include="Archivos\Texto.cs" />
     <Compile Include="Archivos\IArchivo.cs" />
     <Compile Include="Archivos\XML.cs" />
+    <Compile Include="Botella\Botella.cs" />
     <Compile Include="Cerveza\Cerveza.cs" />
     <Compile Include="Cerveza\CervezaIPA.cs" />
     <Compile Include="Cerveza\CervezaKolsh.cs" />
     <Compile Include="Cerveza\EIngredientes.cs" />
     <Compile Include="Cerveza\Ingrediente.cs" />
+    <Compile Include="DAO\BotellaDAO.cs" />
     <Compile Include="DAO\IngredienteDAO.cs" />
     <Compile Include="DAO\RecetaDAO.cs" />
     <Compile Include="DBConexion.cs" />
+    <Compile Include="Embotelladora.cs" />
     <Compile Include="Error.cs" />
     <Compile Include="Cerveza\ETipoCerveza.cs" />
     <Compile Include="FabricaBebidas.cs" />
