@@ -72,9 +72,6 @@ namespace CervezaArtesanalForm
 
         private void CargarListaStock()
         {
-            //FabricaBebidas.cocina.StockIngredientes.ToString();
-            //Cocina.StockIngredientes.ToString();
-            //FabricaBebidas.Cocina.StockIngredientes;
             txtboxStockIngredientes.Text = "";
 
             foreach (Ingrediente item in FabricaBebidas.Cocina.StockIngredientes)

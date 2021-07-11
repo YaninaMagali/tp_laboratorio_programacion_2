@@ -20,6 +20,10 @@ namespace CervezaArtesanal.DAO
             this.comando.Connection = conexion.Conexion;
         }
 
+        /// <summary>
+        /// Consulta que retorna las botellas que estan disponibles
+        /// </summary>
+        /// <returns></returns>
         public List<Botella> ConsultarBotellasDisponibles()
         {
             List<Botella> botellas = new List<Botella>();
@@ -52,8 +56,10 @@ namespace CervezaArtesanal.DAO
             return botellas;
         }
 
-
-
+        /// <summary>
+        /// Cambia el estado de disponibilidad de la botella
+        /// </summary>
+        /// <param name="botella"></param>
         public void ActualizarDisponibilidadBotella(Botella botella)
         {
             comando.CommandText = "UPDATE Botellas SET estaDisponible = @estaDisponible, idReceta = NULL " +

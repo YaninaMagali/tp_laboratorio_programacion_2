@@ -59,6 +59,11 @@ namespace CervezaArtesanal.DAO
             return ingredientes;
         }
 
+        /// <summary>
+        /// Consulta ingredientes por tipo de cerveza
+        /// </summary>
+        /// <param name="idTipoCerveza"></param>
+        /// <returns></returns>
         public List<Ingrediente> ConsultarIngredientesPorIdTipoCerveza(int idTipoCerveza)
         {
             List<Ingrediente> ingredientesNecesarios = new List<Ingrediente>();
@@ -100,6 +105,10 @@ namespace CervezaArtesanal.DAO
             return ingredientesNecesarios;
         }
 
+        /// <summary>
+        /// Actualiza el stock de ingredientes
+        /// </summary>
+        /// <param name="ingredientes"></param>
         public void ActualizarStockIngredientes(List<Ingrediente> ingredientes)
         {
             comando.CommandText = "UPDATE Ingredientes SET stockIngrediente = @stockIngrediente " +
