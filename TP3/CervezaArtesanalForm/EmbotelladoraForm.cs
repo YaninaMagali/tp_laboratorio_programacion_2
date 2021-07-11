@@ -82,5 +82,10 @@ namespace CervezaArtesanalForm
             lblCapacidadTotalBotellas.Text =  Botella.CapacidadTotalBotellas(FabricaBebidas.Embotelladora.botellasDisponibles).ToString();
 
         }
+
+        private void EmbotellarFormClosing(object sender, FormClosingEventArgs e)
+        {
+           FabricaBebidas.Embotelladora.AbortarHilo();
+        }
     }
 }

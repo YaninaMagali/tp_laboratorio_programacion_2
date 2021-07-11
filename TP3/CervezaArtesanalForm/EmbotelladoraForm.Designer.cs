@@ -72,6 +72,7 @@ namespace CervezaArtesanalForm
             this.Controls.Add(this.txtBoxStockCerveza);
             this.Name = "EmbotelladoraForm";
             this.Text = "EmbotellarForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EmbotellarFormClosing);
             this.Load += new System.EventHandler(this.EmbotelladoraLoad);
             this.ResumeLayout(false);
             this.PerformLayout();

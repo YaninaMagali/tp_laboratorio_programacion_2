@@ -21,9 +21,27 @@ namespace CervezaArtesanal
         /// </summary>
         public void IniciarHilo()
         {
-            hiloEmbotellador = new Thread(new ParameterizedThreadStart(EmbotellarCerveza));
-            hiloEmbotellador.Name = "Hilo Embotellador";
-            hiloEmbotellador.Start(FabricaBebidas.ControlStockCerveza);
+            if (this.hiloEmbotellador.NoEsNull()
+                && this.hiloEmbotellador.IsAlive)
+            { throw new Exception();  }
+            else
+            {
+                hiloEmbotellador = new Thread(new ParameterizedThreadStart(EmbotellarCerveza));
+                hiloEmbotellador.Name = "Hilo Embotellador";
+                hiloEmbotellador.Start(FabricaBebidas.ControlStockCerveza);
+            }
+        }
+
+        /// <summary>
+        /// Aborta el hilo
+        /// </summary>
+        public void AbortarHilo()
+        {
+            if (!(this.hiloEmbotellador is null)
+                && this.hiloEmbotellador.IsAlive)
+            {
+                this.hiloEmbotellador.Abort();
+            }
         }
 
         /// <summary>
