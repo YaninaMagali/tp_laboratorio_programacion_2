@@ -1,0 +1,10 @@
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\Test\bin\Debug\Test.exe.config
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\Test\bin\Debug\Test.exe
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\Test\bin\Debug\Test.pdb
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\Test\bin\Debug\CervezaArtesanal.dll
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\Test\bin\Debug\CervezaArtesanal.pdb
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\Test\obj\Debug\Test.csprojAssemblyReference.cache
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\Test\obj\Debug\Test.csproj.CoreCompileInputs.cache
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\Test\obj\Debug\Test.csproj.CopyComplete
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\Test\obj\Debug\Test.exe
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\Test\obj\Debug\Test.pdb

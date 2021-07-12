@@ -1,0 +1,15 @@
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanalForm\obj\Debug\CervezaArtesanalForm.csprojAssemblyReference.cache
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanalForm\obj\Debug\CervezaArtesanalForm.CervezaArtesanalForm.resources
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanalForm\obj\Debug\CervezaArtesanalForm.Properties.Resources.resources
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanalForm\obj\Debug\CervezaArtesanalForm.csproj.GenerateResource.cache
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanalForm\obj\Debug\CervezaArtesanalForm.csproj.CoreCompileInputs.cache
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanalForm\obj\Debug\CervezaArtesanalForm.exe
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanalForm\obj\Debug\CervezaArtesanalForm.pdb
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanalForm\bin\Debug\CervezaArtesanalForm.exe.config
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanalForm\bin\Debug\CervezaArtesanalForm.exe
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanalForm\bin\Debug\CervezaArtesanalForm.pdb
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanalForm\bin\Debug\CervezaArtesanal.dll
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanalForm\bin\Debug\CervezaArtesanal.pdb
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanalForm\obj\Debug\CervezaArtesanalForm.csproj.CopyComplete
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanalForm\obj\Debug\CervezaArtesanalForm.EmbotelladoraForm.resources
+C:\Users\Yanina Diaz\Documents\UTN\PROGRAMACION 2\tp_laboratorio_programacion_2\TP3\CervezaArtesanalForm\obj\Debug\CervezaArtesanalForm.CocinaForm.resources
