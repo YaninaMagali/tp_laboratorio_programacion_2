@@ -93,7 +93,15 @@ namespace CervezaArtesanalForm
         /// <param name="e"></param>
         private void btnIniciarEmbotellado_Click(object sender, EventArgs e)
         {
-            FabricaBebidas.Embotelladora.IniciarHilo();
+            try
+            {
+                FabricaBebidas.Embotelladora.IniciarHilo();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message + "\n" +"Vuelva a intentar");
+            }
         }
 
         /// <summary>
