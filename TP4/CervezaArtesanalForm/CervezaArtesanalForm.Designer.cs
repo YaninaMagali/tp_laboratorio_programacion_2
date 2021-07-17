@@ -112,7 +112,7 @@ namespace CervezaArtesanalForm
             this.btnEmbotellar.Name = "btnEmbotellar";
             this.btnEmbotellar.Size = new System.Drawing.Size(152, 47);
             this.btnEmbotellar.TabIndex = 8;
-            this.btnEmbotellar.Text = "EMBASAR";
+            this.btnEmbotellar.Text = "ENVASAR";
             this.btnEmbotellar.UseVisualStyleBackColor = true;
             this.btnEmbotellar.Click += new System.EventHandler(this.btnEmbotelladora_Click);
             // 
@@ -142,7 +142,7 @@ namespace CervezaArtesanalForm
             this.groupBox2.Size = new System.Drawing.Size(188, 372);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "EMBASADO";
+            this.groupBox2.Text = "ENVASADO";
             // 
             // CervezaArtesanalForm
             // 

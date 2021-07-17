@@ -29,7 +29,7 @@ namespace CervezaArtesanalForm
 
         private void InformarNoHayCervezaParaEmbotelladoEvento()
         {
-            MessageBox.Show("No hay cerveza lista para envasar");
+            MessageBox.Show("No hay cerveza lista para envasar. Si desea envasar, primero debe cocinar cerveza");
         }
 
         private void InformarNoHayBotellasDisponiblesEvento()
