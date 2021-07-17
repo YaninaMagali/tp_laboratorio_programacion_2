@@ -41,6 +41,7 @@ namespace CervezaArtesanalForm
             // 
             this.txtBoxStockCerveza.Location = new System.Drawing.Point(24, 98);
             this.txtBoxStockCerveza.Name = "txtBoxStockCerveza";
+            this.txtBoxStockCerveza.ReadOnly = true;
             this.txtBoxStockCerveza.Size = new System.Drawing.Size(214, 230);
             this.txtBoxStockCerveza.TabIndex = 0;
             this.txtBoxStockCerveza.Text = "";
@@ -109,7 +110,7 @@ namespace CervezaArtesanalForm
             this.Controls.Add(this.txtBoxStockCerveza);
             this.Name = "EmbotelladoraForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Embasar";
+            this.Text = "Embasado";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EmbotellarFormClosing);
             this.Load += new System.EventHandler(this.EmbotelladoraLoad);
             this.ResumeLayout(false);

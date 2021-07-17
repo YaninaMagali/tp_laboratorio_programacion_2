@@ -3,16 +3,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CervezaArtesanal
 {
     public delegate void CocinarDelegado();
+    public delegate void FinalizarCoccionDelegado();
     public class Cocina
     {
         public  List<Ingrediente> stockIngredientes;
         public  List<Fermentador> listaFermentadores;
         public  event CocinarDelegado PuedeEmpezarACocinarEvento;
+        public  event FinalizarCoccionDelegado FinCoccionEvento;
 
         public Cocina()
         {
@@ -135,6 +138,8 @@ namespace CervezaArtesanal
 
                     PuedeEmpezarACocinarEvento?.Invoke();
                     estaCocinando = true;
+                    Thread.Sleep(3500);
+                    FinCoccionEvento?.Invoke();
 
                 }
             }

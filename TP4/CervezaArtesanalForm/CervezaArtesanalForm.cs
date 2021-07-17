@@ -29,6 +29,18 @@ namespace CervezaArtesanalForm
             comboTipos.DataSource = recetas.Keys.ToList<string>();
 
             FabricaBebidas.Cocina.PuedeEmpezarACocinarEvento += FabricaBebidas_PuedeEmpezarACocinarEvento;
+            FabricaBebidas.Cocina.PuedeEmpezarACocinarEvento += Cocina_PuedeEmpezarACocinarEventoMensaje;
+            FabricaBebidas.Cocina.FinCoccionEvento += Cocina_FinCoccionEvento;
+        }
+
+        private void Cocina_PuedeEmpezarACocinarEventoMensaje()
+        {
+            MessageBox.Show("COCINANDO...", "Iuju!");
+        }
+
+        private void Cocina_FinCoccionEvento()
+        {
+            MessageBox.Show("FIN COCCION! ", "Fin");
         }
 
         private void btCocinar_Click(object sender, EventArgs e)
@@ -41,8 +53,19 @@ namespace CervezaArtesanalForm
                 && cantidadLitrosAux > 0
                 && recetas.TryGetValue(comboTipos.SelectedValue.ToString(), out idReceta))
             {
+                //if (FabricaBebidas.Cocina.Cocinar(idReceta, comboTipos.SelectedValue.ToString(), cantidadLitrosAux))
+                //{
+                //}
+                //else
+                //{
+                //    MessageBox.Show("NO HAY FERMENTADORES o STOCK DE INGREDIENTES",
+                //    "Error!",
+                //    MessageBoxButtons.OK,
+                //    MessageBoxIcon.Error);
+                //}
                 if (FabricaBebidas.Cocina.Cocinar(idReceta, comboTipos.SelectedValue.ToString(), cantidadLitrosAux))
-                { MessageBox.Show("COCINANDO", "Iuju!", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                {
+                }
                 else
                 {
                     MessageBox.Show("NO HAY FERMENTADORES o STOCK DE INGREDIENTES",

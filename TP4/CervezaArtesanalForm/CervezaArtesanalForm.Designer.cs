@@ -91,6 +91,7 @@ namespace CervezaArtesanalForm
             // 
             this.txtboxStockIngredientes.Location = new System.Drawing.Point(26, 57);
             this.txtboxStockIngredientes.Name = "txtboxStockIngredientes";
+            this.txtboxStockIngredientes.ReadOnly = true;
             this.txtboxStockIngredientes.Size = new System.Drawing.Size(159, 159);
             this.txtboxStockIngredientes.TabIndex = 6;
             this.txtboxStockIngredientes.Text = "";
