@@ -15,6 +15,7 @@ namespace CervezaArtesanal
         public List<Botella> botellasDisponibles;
         public static event EmbotelladoraDelegado EmbotellandoEvento;
         public static event EmbotelladoraDelegado FinEmbotelladoEvento;
+        public static event EmbotelladoraDelegado NoHayBotellasDisponiblesEvento;
         private Thread hiloEmbotellador;
         
         /// <summary>
@@ -90,6 +91,10 @@ namespace CervezaArtesanal
                     EmbotellandoEvento?.Invoke();
                     Thread.Sleep(2000);
                     FinEmbotelladoEvento?.Invoke();
+                }
+                else
+                {
+                    NoHayBotellasDisponiblesEvento?.Invoke();
                 }
             }
         }
