@@ -73,19 +73,19 @@ namespace CervezaArtesanalForm
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(21, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(182, 17);
+            this.label1.Size = new System.Drawing.Size(180, 17);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Almacenamiento Disponible";
+            this.label1.Text = "Almacenamiento disponible";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(21, 70);
+            this.label2.Location = new System.Drawing.Point(21, 74);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(148, 17);
+            this.label2.Size = new System.Drawing.Size(144, 17);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Control Stock Cerveza";
+            this.label2.Text = "Control stock cerveza";
             // 
             // label3
             // 

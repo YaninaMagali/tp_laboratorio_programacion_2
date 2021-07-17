@@ -24,21 +24,27 @@ namespace CervezaArtesanalForm
             FabricaBebidas.Cocina.PuedeEmpezarACocinarEvento += Embotelladora_EmbotellandoEvento;
             Embotelladora.FinEmbotelladoEvento += InformarFinEmbotellado;
             Embotelladora.NoHayBotellasDisponiblesEvento += InformarNoHayBotellasDisponiblesEvento;
+            Embotelladora.NoHayCervezaParaEmbotelladoEvento += InformarNoHayCervezaParaEmbotelladoEvento;
+        }
+
+        private void InformarNoHayCervezaParaEmbotelladoEvento()
+        {
+            MessageBox.Show("No hay cerveza lista para envasar");
         }
 
         private void InformarNoHayBotellasDisponiblesEvento()
         {
-            MessageBox.Show("No hay botellas disponibles para iniciar en embasado o la capacidad no es suficiente");
+            MessageBox.Show("No hay botellas disponibles para iniciar en envasado o la capacidad no es suficiente");
         }
 
         private void InformarFinEmbotellado()
         {
-            MessageBox.Show("Fin embasado");
+            MessageBox.Show("Fin envasado");
         }
 
         private void Embotelladora_MostrarMensajeExito()
         {
-            MessageBox.Show("Embasado iniciado");
+            MessageBox.Show("Envasado iniciado");
         }
 
         /// <summary>
