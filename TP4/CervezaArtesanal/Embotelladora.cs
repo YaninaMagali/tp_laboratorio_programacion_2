@@ -14,6 +14,7 @@ namespace CervezaArtesanal
     {
         public List<Botella> botellasDisponibles;
         public static event EmbotelladoraDelegado EmbotellandoEvento;
+        public static event EmbotelladoraDelegado FinEmbotelladoEvento;
         private Thread hiloEmbotellador;
         
         /// <summary>
@@ -87,6 +88,8 @@ namespace CervezaArtesanal
                     auxControlStockCerveza.Remove(auxControlStockCerveza.First());
                     Cocina.ActualizarXMLConStockCervezasEnCocina();
                     EmbotellandoEvento?.Invoke();
+                    Thread.Sleep(2000);
+                    FinEmbotelladoEvento?.Invoke();
                 }
             }
         }

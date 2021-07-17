@@ -22,6 +22,12 @@ namespace CervezaArtesanalForm
             Embotelladora.EmbotellandoEvento += Embotelladora_EmbotellandoEvento;
             Embotelladora.EmbotellandoEvento += Embotelladora_MostrarMensajeExito; ;
             FabricaBebidas.Cocina.PuedeEmpezarACocinarEvento += Embotelladora_EmbotellandoEvento;
+            Embotelladora.FinEmbotelladoEvento += InformarFinEmbotellado;
+        }
+
+        private void InformarFinEmbotellado()
+        {
+            MessageBox.Show("Fin embasado");
         }
 
         private void Embotelladora_MostrarMensajeExito()
